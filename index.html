@@ -9,10 +9,10 @@
 <meta property="og:description" content="Locally owned garbage and recycling service serving Lyon County communities since 1984."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://dennys-sanitation.web.app"/>
-<meta property="og:image" content="https://dennys-sanitation.web.app/assets/images/og-image.jpg"/>
+<meta property="og:image" content="https://dennys-sanitation.web.app/assets/images/hero-fleet.jpg"/>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="apple-touch-icon" href="assets/images/logo.png"/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
 <!-- LocalBusiness Schema -->
 <script type="application/ld+json">
@@ -38,223 +38,304 @@
   ],
   "sameAs": ["https://www.facebook.com/DennysSanitation"],
   "foundingDate": "1984",
-  "areaServed": {
-    "@type": "Place",
-    "name": "Lyon County, Iowa"
-  }
+  "areaServed": { "@type": "Place", "name": "Lyon County, Iowa" }
 }
 </script>
 
 <style>
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — Industrial / Bauhaus-inspired
+   Bold geometric, hard shadows, color blocking
+   ═══════════════════════════════════════════════ */
 :root{
-  --red:#C62828;
-  --red-dark:#8E0000;
-  --red-light:#FF5F52;
+  --red:#C41E1E;
+  --red-dark:#8B0000;
+  --red-light:#E85454;
+  --black:#111111;
+  --near-black:#1A1A1A;
+  --charcoal:#2C2C2C;
+  --slate:#4A4A4A;
+  --gray:#7A7A7A;
+  --light-gray:#C8C8C8;
+  --off-white:#F2F0ED;
+  --cream:#FAF8F5;
   --white:#FFFFFF;
-  --off-white:#F9F7F5;
-  --light:#F0EDEA;
-  --dark:#1C1C1C;
-  --darker:#111111;
-  --text:#1C1C1C;
-  --text-mid:#555;
-  --text-light:#888;
-  --border:#E0DCDA;
-  --gray:#37474F;
+  --shadow:4px 4px 0 var(--black);
+  --shadow-red:4px 4px 0 var(--red-dark);
+  --shadow-sm:3px 3px 0 var(--black);
+  --radius:0px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{font-family:'Barlow',Helvetica,Arial,sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+body{font-family:'Barlow',Helvetica,Arial,sans-serif;background:var(--cream);color:var(--black);overflow-x:hidden}
+
+/* ── UTILITY ── */
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.uppercase{text-transform:uppercase}
+.accent-bar{width:60px;height:5px;background:var(--red);margin-bottom:1.5rem}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px}
-.nav-logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
-.nav-logo-icon{width:36px;height:36px;background:var(--red);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em;line-height:1}
-.nav-logo-text{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--text);text-transform:uppercase;letter-spacing:0.04em;line-height:1.15}
-.nav-logo-text span{display:block;font-size:0.62rem;font-weight:600;color:var(--text-light);letter-spacing:0.08em;text-transform:uppercase}
-.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
-.nav-links a{color:var(--text);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:0.03em;transition:color 0.2s}
-.nav-links a:hover{color:var(--red)}
-.nav-cta{background:var(--red);color:var(--white)!important;padding:0.5rem 1.1rem;border-radius:4px;font-weight:700;letter-spacing:0.04em;transition:background 0.2s!important}
-.nav-cta:hover{background:var(--red-dark)!important;color:var(--white)!important}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--black);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;border-bottom:3px solid var(--red)}
+.nav-logo{display:flex;align-items:center;gap:0.7rem;text-decoration:none}
+.nav-logo-mark{width:40px;height:40px;background:var(--red);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;border:2px solid var(--white)}
+.nav-logo-text{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);text-transform:uppercase;letter-spacing:0.06em;line-height:1.1}
+.nav-logo-text span{display:block;font-size:0.58rem;font-weight:600;color:var(--light-gray);letter-spacing:0.12em}
+.nav-links{display:flex;gap:0;list-style:none;align-items:center;height:100%}
+.nav-links a{color:var(--light-gray);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0 1rem;height:100%;display:flex;align-items:center;transition:color 0.15s,background 0.15s;border-left:1px solid rgba(255,255,255,0.08)}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}
+.nav-links li:last-child a{background:var(--red);color:var(--white);font-weight:800;border-left:none}
+.nav-links li:last-child a:hover{background:var(--red-dark)}
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.25s,opacity 0.2s}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger span{display:block;width:24px;height:2.5px;background:var(--white);transition:transform 0.25s,opacity 0.2s}
+.nav-burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 @media(max-width:900px){
   .nav-burger{display:flex}
-  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--white);flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;z-index:199}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--black);flex-direction:column;align-items:stretch;justify-content:flex-start;padding-top:1rem;z-index:199}
   .nav-links.open{display:flex}
-  .nav-links a{font-size:1.15rem}
+  .nav-links a{height:auto;padding:1.1rem 2rem;font-size:1rem;border-left:none;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .nav-links li:last-child a{margin:1rem 2rem;text-align:center;justify-content:center}
 }
 
-/* ── ANNOUNCEMENT BAR ── */
-.announcement{position:fixed;top:64px;left:0;right:0;z-index:199;background:var(--red);color:var(--white);text-align:center;padding:0.6rem 2rem;font-size:0.82rem;font-weight:600;letter-spacing:0.02em;display:none}
+/* ── ANNOUNCEMENT ── */
+.announcement{position:fixed;top:64px;left:0;right:0;z-index:199;background:var(--red);color:var(--white);text-align:center;padding:0.65rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;display:none}
 .announcement.visible{display:block}
 
 /* ── HERO ── */
-.hero{margin-top:64px;position:relative;min-height:calc(100vh - 64px);display:flex;align-items:center;background:var(--darker);overflow:hidden}
-.hero.with-announcement{margin-top:calc(64px + 2.2rem)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.45) 100%);z-index:1}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55}
-.hero-content{position:relative;z-index:2;max-width:700px;padding:4rem 3rem;margin-left:6vw}
-.hero-badge{display:inline-block;background:var(--red);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 1rem;border-radius:3px;margin-bottom:1.5rem}
-.hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.8rem,5.5vw,4.5rem);color:var(--white);line-height:1.08;text-transform:uppercase;letter-spacing:0.01em;margin-bottom:1rem}
-.hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:2rem;max-width:500px}
+.hero{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px)}
+.hero.with-announcement{margin-top:calc(64px + 2.5rem)}
+.hero-left{background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:4rem 3.5rem;position:relative;overflow:hidden}
+.hero-left::after{content:'';position:absolute;top:-80px;right:-80px;width:200px;height:200px;border:30px solid rgba(196,30,30,0.15);transform:rotate(15deg)}
+.hero-since{display:inline-block;border:2px solid var(--red);color:var(--red);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;padding:0.4rem 1rem;margin-bottom:2rem}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3rem,6vw,5rem);color:var(--white);line-height:0.95;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:1.5rem}
+.hero-title .red{color:var(--red)}
+.hero-sub{font-size:1.05rem;color:var(--light-gray);line-height:1.7;margin-bottom:2.5rem;max-width:420px}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.hero-info{margin-top:2.5rem;display:flex;gap:2.5rem;flex-wrap:wrap}
-.hero-info-item{display:flex;align-items:flex-start;gap:0.5rem;color:rgba(255,255,255,0.7);font-size:0.85rem;line-height:1.5}
-.hero-info-item svg{flex-shrink:0;width:18px;height:18px;fill:var(--red-light);margin-top:2px}
-@media(max-width:700px){
-  .hero-content{margin-left:0;padding:3rem 1.5rem}
-  .hero-info{flex-direction:column;gap:1rem}
+.hero-info-bar{display:flex;gap:0;margin-top:3rem;border:2px solid rgba(255,255,255,0.1)}
+.hero-info-item{flex:1;padding:1rem;border-right:2px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:0.2rem}
+.hero-info-item:last-child{border-right:none}
+.hero-info-label{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red-light)}
+.hero-info-value{font-size:0.85rem;color:var(--light-gray);line-height:1.5}
+.hero-info-value a{color:var(--light-gray);text-decoration:none;transition:color 0.15s}
+.hero-info-value a:hover{color:var(--white)}
+.hero-right{position:relative;overflow:hidden;background:var(--charcoal)}
+.hero-right img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;filter:contrast(1.1) saturate(1.1)}
+.hero-right::after{content:'DENNY\'S\\ASANITATION';position:absolute;bottom:2rem;right:2rem;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:4.5rem;color:rgba(255,255,255,0.06);line-height:0.9;text-transform:uppercase;text-align:right;pointer-events:none;white-space:pre}
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:3rem 1.5rem}
+  .hero-right{min-height:280px}
+  .hero-right::after{display:none}
+  .hero-info-bar{flex-direction:column}
+  .hero-info-item{border-right:none;border-bottom:2px solid rgba(255,255,255,0.1)}
+  .hero-info-item:last-child{border-bottom:none}
 }
 
 /* ── BUTTONS ── */
-.btn{display:inline-block;padding:0.8rem 1.8rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;border-radius:4px;transition:background 0.2s,color 0.2s,border-color 0.2s}
-.btn-red{background:var(--red);color:var(--white)}
-.btn-red:hover{background:var(--red-dark)}
-.btn-outline-white{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.4)}
-.btn-outline-white:hover{border-color:var(--white)}
-.btn-outline{background:transparent;color:var(--text);border:2px solid var(--border)}
-.btn-outline:hover{border-color:var(--text)}
-.btn-phone{display:inline-flex;align-items:center;gap:0.5rem}
-.btn-phone svg{width:18px;height:18px;fill:currentColor}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform 0.1s,box-shadow 0.1s,background 0.15s;position:relative}
+.btn:active{transform:translate(3px,3px);box-shadow:none!important}
+.btn-red{background:var(--red);color:var(--white);border-color:var(--red);box-shadow:var(--shadow)}
+.btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.btn-white{background:var(--white);color:var(--black);border-color:var(--black);box-shadow:var(--shadow)}
+.btn-white:hover{background:var(--off-white)}
+.btn-outline-white{background:transparent;color:var(--white);border-color:var(--white)}
+.btn-outline-white:hover{background:var(--white);color:var(--black)}
+.btn-outline{background:transparent;color:var(--black);border-color:var(--black);box-shadow:var(--shadow-sm)}
+.btn-outline:hover{background:var(--black);color:var(--white)}
+.btn svg{width:18px;height:18px;fill:currentColor}
 
 /* ── SECTIONS ── */
-section{padding:5rem 2rem}
-.container{max-width:1100px;margin:0 auto}
-.section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem}
-.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,2.8rem);color:var(--text);line-height:1.15;text-transform:uppercase;margin-bottom:1rem}
-.section-sub{font-size:1rem;color:var(--text-mid);line-height:1.85;max-width:600px}
-.dark-section{background:var(--dark)}
-.dark-section .section-label{color:var(--red-light)}
-.dark-section .section-title{color:var(--white)}
-.dark-section .section-sub{color:#aaa}
-.light-section{background:var(--light)}
-.red-section{background:var(--red)}
-.red-section .section-label{color:rgba(255,255,255,0.65)}
-.red-section .section-title{color:var(--white)}
-.red-section .section-sub{color:rgba(255,255,255,0.8)}
+section{padding:5.5rem 2rem}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,4.5vw,3.2rem);color:var(--black);line-height:1.05;text-transform:uppercase;margin-bottom:1rem;letter-spacing:-0.01em}
+.section-sub{font-size:1rem;color:var(--slate);line-height:1.8;max-width:550px}
+.dark-bg{background:var(--black);color:var(--white)}
+.dark-bg .section-label{color:var(--red-light)}
+.dark-bg .section-title{color:var(--white)}
+.dark-bg .section-sub{color:var(--light-gray)}
+.red-bg{background:var(--red)}
+.red-bg .section-title{color:var(--white)}
+.alt-bg{background:var(--off-white)}
 
 /* ── ROUTE NOTICES ── */
-.notices-bar{background:var(--off-white);border-bottom:1px solid var(--border);padding:1.5rem 2rem}
-.notices-bar.with-announcement{margin-top:calc(64px + 2.2rem)}
+.notices-bar{background:var(--near-black);border-bottom:3px solid var(--red);padding:1.2rem 2rem;display:none}
+.notices-bar.visible{display:block}
 .notices-inner{max-width:1100px;margin:0 auto}
-.notices-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem}
+.notices-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem}
 .notices-header svg{width:20px;height:20px;fill:var(--red)}
-.notices-header span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red)}
-.notice-item{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:4px;padding:1rem 1.25rem;margin-bottom:0.75rem}
+.notices-header span{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--red)}
+.notice-item{background:transparent;border:2px solid rgba(255,255,255,0.12);padding:0.9rem 1.1rem;margin-bottom:0.6rem;display:grid;grid-template-columns:auto 1fr;gap:0.8rem;align-items:start}
 .notice-item:last-child{margin-bottom:0}
-.notice-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--text);margin-bottom:0.25rem}
-.notice-body{font-size:0.9rem;color:var(--text-mid);line-height:1.6}
-.no-notices{display:none}
+.notice-bullet{width:10px;height:10px;background:var(--red);margin-top:4px;flex-shrink:0}
+.notice-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;text-transform:uppercase;color:var(--white);letter-spacing:0.04em}
+.notice-body{font-size:0.85rem;color:var(--light-gray);line-height:1.5;margin-top:0.15rem}
 
 /* ── SERVICES ── */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:3rem}
-.service-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color 0.25s,transform 0.25s}
-.service-card:hover{border-color:#ccc;transform:translateY(-3px)}
-.service-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--light)}
-.service-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
-.service-card:hover .service-img img{transform:scale(1.04)}
-.service-icon-bar{height:6px;background:var(--red)}
-.service-body{padding:1.75rem}
-.service-icon{width:48px;height:48px;background:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
-.service-icon svg{width:26px;height:26px;fill:var(--white)}
-.service-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.25rem;text-transform:uppercase;color:var(--text);margin-bottom:0.6rem}
-.service-desc{font-size:0.9rem;color:var(--text-mid);line-height:1.7}
-.service-detail{margin-top:1rem;font-size:0.82rem;color:var(--text-light);line-height:1.7}
-.service-detail strong{color:var(--text-mid)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border:2px solid var(--black)}
+.service-card{border-right:2px solid var(--black);border-bottom:2px solid var(--black);background:var(--white);transition:background 0.2s}
+.service-card:nth-child(3n){border-right:none}
+.service-card:nth-child(n+4){border-bottom:none}
+.service-card:hover{background:var(--cream)}
+.service-img{width:100%;aspect-ratio:16/10;overflow:hidden;background:var(--off-white);border-bottom:2px solid var(--black)}
+.service-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s}
+.service-card:hover .service-img img{transform:scale(1.03)}
+.service-body{padding:1.5rem}
+.service-number{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.5rem;color:rgba(0,0,0,0.06);line-height:1;margin-bottom:0.5rem}
+.service-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.15rem;text-transform:uppercase;color:var(--black);margin-bottom:0.5rem;letter-spacing:0.02em}
+.service-desc{font-size:0.88rem;color:var(--slate);line-height:1.65}
+.service-detail{margin-top:0.8rem;font-size:0.8rem;color:var(--gray);line-height:1.6}
+.service-detail strong{color:var(--slate)}
+@media(max-width:900px){
+  .services-grid{grid-template-columns:1fr 1fr}
+  .service-card:nth-child(3n){border-right:2px solid var(--black)}
+  .service-card:nth-child(2n){border-right:none}
+  .service-card{border-bottom:2px solid var(--black)!important}
+  .service-card:nth-last-child(-n+2){border-bottom:none!important}
+}
+@media(max-width:580px){
+  .services-grid{grid-template-columns:1fr}
+  .service-card{border-right:none!important;border-bottom:2px solid var(--black)!important}
+  .service-card:last-child{border-bottom:none!important}
+}
 
 /* ── SERVICE AREA ── */
-.area-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.75rem;margin-top:2rem}
-.area-town{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:4px;padding:0.6rem 1rem;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:0.9rem;color:var(--white);letter-spacing:0.04em;text-transform:uppercase}
-.area-note{margin-top:1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.6);font-style:italic}
+.area-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border:2px solid rgba(255,255,255,0.15)}
+.area-stat{padding:2rem;text-align:center;border-right:2px solid rgba(255,255,255,0.15)}
+.area-stat:last-child{border-right:none}
+.area-stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--red-light);line-height:1}
+.area-stat-label{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--light-gray);margin-top:0.5rem}
+.area-towns{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2.5rem}
+.area-town{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:0.5rem 1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.85rem;color:var(--white);letter-spacing:0.06em;text-transform:uppercase;transition:background 0.15s,border-color 0.15s}
+.area-town:hover{background:var(--red);border-color:var(--red)}
+.area-note{margin-top:1.5rem;font-size:0.82rem;color:rgba(255,255,255,0.45);font-style:italic}
+@media(max-width:580px){
+  .area-stats{grid-template-columns:1fr}
+  .area-stat{border-right:none;border-bottom:2px solid rgba(255,255,255,0.15);padding:1.5rem}
+  .area-stat:last-child{border-bottom:none}
+}
 
 /* ── HOURS ── */
-.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
-@media(max-width:768px){.hours-grid{grid-template-columns:1fr;gap:2.5rem}}
+.hours-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;border:2px solid var(--black)}
+.hours-left{padding:2.5rem;border-right:2px solid var(--black)}
+.hours-right{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;background:var(--red);position:relative;overflow:hidden}
+.hours-right::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border:25px solid rgba(255,255,255,0.08);transform:rotate(20deg)}
 .hours-table{width:100%;border-collapse:collapse}
-.hours-table tr{border-bottom:1px solid var(--border)}
-.hours-table td{padding:0.85rem 0;font-size:0.92rem;color:var(--text-mid)}
-.hours-table td:last-child{text-align:right}
-.hours-table tr.open td{color:var(--text);font-weight:600}
-.hours-override{background:var(--red);color:var(--white);padding:1rem 1.25rem;border-radius:6px;margin-top:1.5rem;font-size:0.9rem;line-height:1.6;display:none}
+.hours-table tr{border-bottom:2px solid var(--off-white)}
+.hours-table tr:last-child{border-bottom:none}
+.hours-table td{padding:0.8rem 0;font-size:0.92rem;color:var(--gray)}
+.hours-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--slate)}
+.hours-table td:last-child{text-align:right;font-weight:500}
+.hours-table tr.open td{color:var(--black)}
+.hours-table tr.open td:first-child{color:var(--black)}
+.hours-override{background:var(--red);color:var(--white);padding:1rem 1.25rem;border:2px solid var(--red-dark);margin-top:1.5rem;font-size:0.88rem;line-height:1.6;font-weight:600;display:none}
 .hours-override.visible{display:block}
-.hours-info{display:flex;flex-direction:column;align-items:center;text-align:center}
-.hours-logo{width:180px;height:auto;margin-bottom:1.5rem;border-radius:8px;overflow:hidden}
-.hours-logo img{width:100%;height:auto;display:block}
-.hours-biz-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)}
-.hours-address{color:var(--text-mid);font-size:0.88rem;margin-top:0.75rem;line-height:1.7}
+.hours-logo{width:160px;margin-bottom:1.5rem;border:3px solid var(--white);padding:8px;background:var(--white)}
+.hours-logo img{width:100%;display:block}
+.hours-biz-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--white)}
+.hours-address{color:rgba(255,255,255,0.85);font-size:0.88rem;margin-top:0.6rem;line-height:1.7;text-align:center}
+@media(max-width:768px){
+  .hours-layout{grid-template-columns:1fr}
+  .hours-left{border-right:none;border-bottom:2px solid var(--black)}
+}
 
 /* ── FAQ ── */
-.faq-list{margin-top:3rem}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 0;cursor:pointer;gap:1rem;background:none;border:none;width:100%;text-align:left;font-family:'Barlow',sans-serif;font-size:1rem;font-weight:600;color:var(--text);transition:color 0.2s}
-.faq-q:hover{color:var(--red)}
-.faq-q svg{width:20px;height:20px;flex-shrink:0;fill:var(--text-light);transition:transform 0.3s}
+.faq-list{margin-top:3rem;border:2px solid var(--black)}
+.faq-item{border-bottom:2px solid var(--black)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;cursor:pointer;gap:1rem;background:var(--white);border:none;width:100%;text-align:left;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--black);text-transform:uppercase;letter-spacing:0.03em;transition:background 0.15s,color 0.15s}
+.faq-q:hover{background:var(--off-white)}
+.faq-q.open{background:var(--black);color:var(--white)}
+.faq-q svg{width:20px;height:20px;flex-shrink:0;fill:currentColor;transition:transform 0.25s}
 .faq-q.open svg{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease}
-.faq-a.open{max-height:500px;padding-bottom:1.25rem}
-.faq-a p{font-size:0.92rem;color:var(--text-mid);line-height:1.8}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+.faq-a.open{max-height:400px}
+.faq-a-inner{padding:1.2rem 1.5rem;font-size:0.92rem;color:var(--slate);line-height:1.8;background:var(--cream);border-top:none}
 
 /* ── PAYMENT POLICIES ── */
-.policy-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:1.75rem;margin-bottom:1.25rem}
-.policy-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--text);margin-bottom:0.6rem}
-.policy-card p{font-size:0.9rem;color:var(--text-mid);line-height:1.75}
-.policy-card p strong{color:var(--text)}
+.policies-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;border:2px solid var(--black)}
+.policy-card{padding:1.75rem;border-right:2px solid var(--black);border-bottom:2px solid var(--black);background:var(--white)}
+.policy-card:nth-child(2n){border-right:none}
+.policy-card:nth-child(n+3){border-bottom:none}
+.policy-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;color:var(--black);margin-bottom:0.75rem;letter-spacing:0.03em;display:flex;align-items:center;gap:0.5rem}
+.policy-card h3::before{content:'';width:12px;height:12px;background:var(--red);flex-shrink:0}
+.policy-card p{font-size:0.88rem;color:var(--slate);line-height:1.7}
+.policy-card p strong{color:var(--black)}
+@media(max-width:680px){
+  .policies-grid{grid-template-columns:1fr}
+  .policy-card{border-right:none!important;border-bottom:2px solid var(--black)!important}
+  .policy-card:last-child{border-bottom:none!important}
+}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:var(--red);padding:4.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-60px;left:-60px;width:180px;height:180px;border:30px solid rgba(255,255,255,0.06);transform:rotate(30deg)}
+.cta-banner::after{content:'';position:absolute;bottom:-40px;right:-40px;width:140px;height:140px;border:25px solid rgba(255,255,255,0.05);transform:rotate(-15deg)}
+.cta-banner h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,4.5vw,3rem);color:var(--white);text-transform:uppercase;margin-bottom:0.75rem;position:relative;z-index:1}
+.cta-banner p{color:rgba(255,255,255,0.85);font-size:1rem;margin-bottom:2rem;max-width:450px;margin-left:auto;margin-right:auto;line-height:1.7;position:relative;z-index:1}
 
 /* ── CONTACT ── */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start}
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
-.contact-map{border-radius:6px;overflow:hidden;border:1px solid var(--border)}
-.contact-map iframe{width:100%;height:320px;display:block;border:none}
-.contact-details{display:flex;flex-direction:column;gap:1.5rem}
-.contact-label{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.3rem}
-.contact-value{font-size:0.95rem;color:var(--text-mid);line-height:1.7}
-.contact-value a{color:var(--red);text-decoration:none;font-weight:600;transition:color 0.2s}
-.contact-value a:hover{color:var(--red-dark)}
-.contact-social a{display:inline-flex;align-items:center;gap:0.4rem;color:var(--text-mid);text-decoration:none;font-size:0.85rem;font-weight:600;border:1px solid var(--border);padding:0.45rem 1rem;border-radius:4px;transition:border-color 0.2s,color 0.2s}
-.contact-social a:hover{color:var(--red);border-color:var(--red)}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;border:2px solid rgba(255,255,255,0.12)}
+.contact-left{padding:2.5rem;border-right:2px solid rgba(255,255,255,0.12)}
+.contact-right{padding:2.5rem}
+.contact-map{overflow:hidden;border:2px solid rgba(255,255,255,0.12);margin-bottom:2rem}
+.contact-map iframe{width:100%;height:250px;display:block;border:none;filter:grayscale(40%) contrast(1.1)}
+.contact-detail{margin-bottom:1.5rem}
+.contact-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--red-light);margin-bottom:0.3rem}
+.contact-value{font-size:0.92rem;color:var(--light-gray);line-height:1.6}
+.contact-value a{color:var(--white);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.2);transition:border-color 0.15s}
+.contact-value a:hover{border-color:var(--red)}
+.contact-social a{display:inline-flex;align-items:center;gap:0.4rem;color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;border:2px solid rgba(255,255,255,0.2);padding:0.5rem 1.1rem;transition:background 0.15s,border-color 0.15s}
+.contact-social a:hover{background:var(--red);border-color:var(--red)}
 .contact-social svg{width:16px;height:16px;fill:currentColor}
+@media(max-width:768px){
+  .contact-layout{grid-template-columns:1fr}
+  .contact-left{border-right:none;border-bottom:2px solid rgba(255,255,255,0.12)}
+}
 
-/* ── CONTACT FORM ── */
+/* ── FORM ── */
 .form{display:flex;flex-direction:column;gap:1rem}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:500px){.form-row{grid-template-columns:1fr}}
-.form label{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:0.35rem}
-.form input,.form textarea,.form select{width:100%;padding:0.7rem 0.9rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Barlow',sans-serif;font-size:0.9rem;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s}
+.form label{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--light-gray);display:block;margin-bottom:0.35rem}
+.form input,.form textarea,.form select{width:100%;padding:0.75rem 0.9rem;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);font-family:'Barlow',sans-serif;font-size:0.9rem;color:var(--white);outline:none;transition:border-color 0.15s}
+.form input::placeholder,.form textarea::placeholder{color:var(--gray)}
 .form input:focus,.form textarea:focus,.form select:focus{border-color:var(--red)}
-.form textarea{min-height:120px;resize:vertical}
-.form-submit{background:var(--red);color:var(--white);border:none;border-radius:4px;padding:0.85rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;align-self:flex-start}
+.form textarea{min-height:110px;resize:vertical}
+.form-submit{background:var(--red);color:var(--white);border:2px solid var(--red);padding:0.85rem 2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.15s,transform 0.1s,box-shadow 0.1s;box-shadow:var(--shadow-red);align-self:flex-start}
 .form-submit:hover{background:var(--red-dark)}
+.form-submit:active{transform:translate(3px,3px);box-shadow:none}
 .form-submit:disabled{opacity:0.6;cursor:not-allowed}
-.form-msg{font-size:0.88rem;padding:0.75rem 1rem;border-radius:4px;display:none}
+.form-msg{font-size:0.88rem;padding:0.75rem 1rem;display:none;font-weight:600}
 .form-msg.success{background:#d4edda;color:#155724;display:block}
 .form-msg.error{background:#f8d7da;color:#721c24;display:block}
 
-/* ── CTA BANNER ── */
-.cta-banner{background:var(--red);padding:4rem 2rem;text-align:center}
-.cta-banner h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);text-transform:uppercase;margin-bottom:1rem}
-.cta-banner p{color:rgba(255,255,255,0.85);font-size:1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
-.cta-banner .btn{background:var(--white);color:var(--red);font-weight:700}
-.cta-banner .btn:hover{background:var(--off-white)}
-
 /* ── FOOTER ── */
-footer{background:var(--darker);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,0.07)}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:#666;text-transform:uppercase;letter-spacing:0.06em}
-.footer-links{display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap}
-.footer-links a{font-size:0.78rem;color:#666;text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:#aaa}
-.footer-copy{font-size:0.73rem;color:#444;width:100%;text-align:center;margin-top:0.5rem}
+footer{background:var(--black);padding:0;border-top:3px solid var(--red)}
+.footer-main{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding:3rem 2rem;max-width:1100px;margin:0 auto}
+.footer-brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;text-transform:uppercase;color:var(--white);letter-spacing:0.04em;margin-bottom:0.75rem}
+.footer-brand-sub{font-size:0.85rem;color:var(--gray);line-height:1.6}
+.footer-col-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--red-light);margin-bottom:1rem}
+.footer-col a{display:block;color:var(--gray);text-decoration:none;font-size:0.85rem;padding:0.3rem 0;transition:color 0.15s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:1.5rem 2rem;text-align:center}
+.footer-copy{font-size:0.72rem;color:var(--slate);letter-spacing:0.04em}
+@media(max-width:680px){
+  .footer-main{grid-template-columns:1fr;gap:2rem}
+}
 
 /* ── SCROLL ANIMATION ── */
-.fade-up{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
 /* ── FOCUS STATES ── */
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  .fade-up{opacity:1;transform:none;transition:none}
+  *{transition-duration:0.01ms!important;animation-duration:0.01ms!important}
+}
 </style>
 </head>
 <body>
@@ -262,7 +343,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- ── NAV ── -->
 <nav>
   <a href="#home" class="nav-logo">
-    <div class="nav-logo-icon">DS</div>
+    <div class="nav-logo-mark">DS</div>
     <div class="nav-logo-text">Denny's Sanitation<span>Rock Rapids, Iowa</span></div>
   </a>
   <button class="nav-burger" id="burger" aria-label="Toggle menu">
@@ -270,51 +351,53 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   </button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#service-area">Area</a></li>
     <li><a href="#hours">Hours</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#policies">Policies</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="tel:+17124722293" class="nav-cta btn-phone"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>(712) 472-2293</a></li>
+    <li><a href="tel:+17124722293">(712) 472-2293</a></li>
   </ul>
 </nav>
 
-<!-- ── ANNOUNCEMENT BAR ── -->
+<!-- ── ANNOUNCEMENT ── -->
 <div class="announcement" id="announcement-bar"></div>
 
 <!-- ── HERO ── -->
 <section id="home" class="hero">
-  <img class="hero-bg" src="assets/images/hero-fleet.jpg" alt="Denny's Sanitation fleet — garbage truck, roll-off truck, and service van">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Serving Our Communities Since 1984</div>
-    <h1 class="hero-title">Locally Owned<br>Garbage &amp; Recycling</h1>
-    <p class="hero-sub">Reliable waste management for Rock Rapids and Lyon County communities. Family owned and operated for over 40 years.</p>
+  <div class="hero-left">
+    <div class="hero-since">Serving Our Communities Since 1984</div>
+    <h1 class="hero-title">Locally Owned<br>Garbage <span class="red">&amp;</span><br>Recycling</h1>
+    <p class="hero-sub">Reliable waste management for Rock Rapids, Larchwood, George, and Lyon County communities. Family owned and operated for over 40 years.</p>
     <div class="hero-btns">
-      <a href="tel:+17124722293" class="btn btn-red btn-phone">
+      <a href="tel:+17124722293" class="btn btn-red">
         <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>
         Call (712) 472-2293
       </a>
       <a href="#services" class="btn btn-outline-white">Our Services</a>
     </div>
-    <div class="hero-info">
+    <div class="hero-info-bar">
       <div class="hero-info-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.999 2.5 2.5 0 0112 11.5z"/></svg>
-        213 N. Union Street<br>Rock Rapids, IA 51246
+        <span class="hero-info-label">Address</span>
+        <span class="hero-info-value">213 N. Union Street<br>Rock Rapids, IA 51246</span>
       </div>
       <div class="hero-info-item">
-        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-        Mon–Thu 7 AM–5 PM<br>Fri 7 AM–2 PM
+        <span class="hero-info-label">Office Hours</span>
+        <span class="hero-info-value">Mon–Thu 7 AM–5 PM<br>Fri 7 AM–2 PM</span>
       </div>
       <div class="hero-info-item">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        dennysanitation@gmail.com
+        <span class="hero-info-label">Email</span>
+        <span class="hero-info-value"><a href="mailto:dennysanitation@gmail.com">dennysanitation<br>@gmail.com</a></span>
       </div>
     </div>
+  </div>
+  <div class="hero-right">
+    <img src="assets/images/hero-fleet.jpg" alt="Denny's Sanitation fleet — garbage truck, roll-off truck, and service van">
   </div>
 </section>
 
 <!-- ── ROUTE NOTICES ── -->
-<div id="notices-section" class="notices-bar" style="display:none">
+<div id="notices-section" class="notices-bar">
   <div class="notices-inner">
     <div class="notices-header">
       <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
@@ -325,106 +408,78 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </div>
 
 <!-- ── SERVICES ── -->
-<section id="services">
+<section id="services" class="alt-bg">
   <div class="container">
     <p class="section-label fade-up">What We Do</p>
     <h2 class="section-title fade-up">Our Services</h2>
-    <p class="section-sub fade-up">From curbside garbage pickup to dumpster rentals and portable toilets, we've got your waste management needs covered.</p>
-    <div class="services-grid">
+    <p class="section-sub fade-up">From curbside garbage pickup to dumpster rentals and portable toilets — we handle it all.</p>
+    <div class="services-grid fade-up">
 
-      <!-- Residential -->
-      <div class="service-card fade-up">
-        <div class="service-icon-bar"></div>
+      <div class="service-card">
         <div class="service-body">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-          </div>
+          <div class="service-number">01</div>
           <h3 class="service-name">Residential</h3>
           <p class="service-desc">Weekly curbside garbage pickup for homes throughout Lyon County. Dependable service rain or shine — just set your cart out by 7 AM on your pickup day.</p>
           <div class="service-detail">
             <strong>Pickup Schedule:</strong><br>
-            Monday — Rock Rapids<br>
-            Tuesday — George<br>
-            Wednesday — Lester &amp; Alvord<br>
-            Friday — Doon &amp; Larchwood
+            Mon — Rock Rapids / Tue — George<br>
+            Wed — Lester &amp; Alvord<br>
+            Fri — Doon &amp; Larchwood
           </div>
         </div>
       </div>
 
-      <!-- Commercial & Farm -->
-      <div class="service-card fade-up">
-        <div class="service-img"><img src="assets/images/dumpster-brown.jpg" alt="Denny's Sanitation commercial dumpster" loading="lazy"></div>
+      <div class="service-card">
+        <div class="service-img"><img src="assets/images/dumpster-brown.jpg" alt="Commercial dumpster with Denny's Sanitation logo" loading="lazy"></div>
         <div class="service-body">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
-          </div>
+          <div class="service-number">02</div>
           <h3 class="service-name">Commercial &amp; Farm</h3>
-          <p class="service-desc">Dumpster pickup service for farm and commercial customers throughout the area. We provide the container, schedule regular pickups, and handle all maintenance and servicing.</p>
+          <p class="service-desc">Dumpster pickup service for farm and commercial customers throughout the area. We provide the container, schedule regular pickups, and handle maintenance.</p>
         </div>
       </div>
 
-      <!-- Recycling -->
-      <div class="service-card fade-up">
-        <div class="service-icon-bar"></div>
+      <div class="service-card">
         <div class="service-body">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M5.77 7.15L7.2 4.78l1.03-1.71c.39-.65 1.16-1.05 1.97-.92.34.06.65.22.89.47l.57.6.57-.6c.24-.25.55-.41.89-.47.81-.14 1.58.26 1.97.92l1.03 1.71 1.43 2.37H21l-4.21 7H16l-2 3.46L12 21l-2-3.46-2 3.46-4.21-7.31H1l2.77-4.61L5.77 7.15zM12 14.15l2-3.46h-4l2 3.46z"/></svg>
-          </div>
+          <div class="service-number">03</div>
           <h3 class="service-name">Recycling</h3>
-          <p class="service-desc">Curbside recycling collection twice per month. Recycling helps keep our landfills from filling up too quickly and is a big part of doing our part for the environment.</p>
+          <p class="service-desc">Curbside recycling collection twice per month. Doing our part to keep landfills from filling up too quickly.</p>
           <div class="service-detail">
-            <strong>Recycling Schedule:</strong><br>
-            1st &amp; 3rd Thursdays — Rock Rapids &amp; Larchwood<br>
-            2nd &amp; 4th Thursdays — George<br>
-            Every other Monday — Lester, Doon &amp; Alvord
+            <strong>Schedule:</strong><br>
+            1st &amp; 3rd Thu — Rock Rapids &amp; Larchwood<br>
+            2nd &amp; 4th Thu — George<br>
+            Every other Mon — Lester, Doon &amp; Alvord
           </div>
         </div>
       </div>
 
-      <!-- Can Redemption -->
-      <div class="service-card fade-up">
-        <div class="service-icon-bar"></div>
+      <div class="service-card">
         <div class="service-body">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
-          </div>
+          <div class="service-number">04</div>
           <h3 class="service-name">Can Redemption</h3>
-          <p class="service-desc">Bring in your Iowa-deposit cans and bottles to get your $0.05 per container refund. We accept cans, bottles, and 2-liter bottles from major brands.</p>
+          <p class="service-desc">Bring in your Iowa-deposit cans and bottles to get your $0.05 per container refund. We accept major brands.</p>
           <div class="service-detail">
-            <strong>Hours:</strong> Mon–Thu 12:00–5:00 PM (Closed Fri &amp; Sat)<br>
-            <strong>Requirements:</strong> Items must be clean, empty, and free from garbage. Bag cans in clear bags, box glass separately, and label with your name and phone number.
+            <strong>Hours:</strong> Mon–Thu 12–5 PM (Closed Fri &amp; Sat)<br>
+            Items must be clean, empty, and free from garbage. Bag cans in clear bags, box glass separately.
           </div>
         </div>
       </div>
 
-      <!-- Portable Toilets -->
-      <div class="service-card fade-up">
-        <div class="service-icon-bar"></div>
+      <div class="service-card">
         <div class="service-body">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H9V5h6v2z"/></svg>
-          </div>
+          <div class="service-number">05</div>
           <h3 class="service-name">Portable Toilets</h3>
-          <p class="service-desc">Portable toilet rental and servicing within a 40-mile radius of Rock Rapids. Perfect for events, celebrations, and work sites. Weekly maintenance available for extended projects.</p>
+          <p class="service-desc">Portable toilet rental and servicing within a 40-mile radius of Rock Rapids. Perfect for events, celebrations, and work sites with optional weekly maintenance.</p>
         </div>
       </div>
 
-      <!-- Dumpsters & Roll-Offs -->
-      <div class="service-card fade-up">
-        <div class="service-img"><img src="assets/images/rolloff-delivery.jpg" alt="Denny's Sanitation roll-off dumpster delivery" loading="lazy"></div>
+      <div class="service-card">
+        <div class="service-img"><img src="assets/images/rolloff-delivery.jpg" alt="Roll-off dumpster delivery" loading="lazy"></div>
         <div class="service-body">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-          </div>
+          <div class="service-number">06</div>
           <h3 class="service-name">Dumpsters &amp; Roll-Offs</h3>
-          <p class="service-desc">Dumpster and roll-off container rentals for construction, renovation, and cleanout projects. Available in multiple sizes to fit your needs.</p>
+          <p class="service-desc">Dumpster and roll-off rentals for construction, renovation, and cleanout projects.</p>
           <div class="service-detail">
-            <strong>Available Sizes:</strong><br>
-            1½ Yard — 5' W &times; 3' L &times; 4' H<br>
-            4 Yard — 5.5' W &times; 7' L &times; 4' H<br>
-            6 Yard — 5.5' W &times; 10' L &times; 4' H<br>
-            20 Yard — 8' W &times; 19' L &times; 4' H<br>
-            30 Yard — 8' W &times; 22' L &times; 5' H
+            <strong>Sizes:</strong> 1½ yd · 4 yd · 6 yd · 20 yd · 30 yd
           </div>
         </div>
       </div>
@@ -434,12 +489,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </section>
 
 <!-- ── SERVICE AREA ── -->
-<section id="service-area" class="dark-section">
+<section id="service-area" class="dark-bg">
   <div class="container">
     <p class="section-label fade-up">Where We Serve</p>
     <h2 class="section-title fade-up">Service Area</h2>
     <p class="section-sub fade-up">Proudly serving Lyon County and surrounding northwest Iowa communities.</p>
-    <div class="area-grid fade-up">
+    <div class="area-stats fade-up">
+      <div class="area-stat">
+        <div class="area-stat-num">40+</div>
+        <div class="area-stat-label">Years of Service</div>
+      </div>
+      <div class="area-stat">
+        <div class="area-stat-num">9</div>
+        <div class="area-stat-label">Communities Served</div>
+      </div>
+      <div class="area-stat">
+        <div class="area-stat-num">6</div>
+        <div class="area-stat-label">Service Types</div>
+      </div>
+    </div>
+    <div class="area-towns fade-up">
       <div class="area-town">Rock Rapids</div>
       <div class="area-town">Larchwood</div>
       <div class="area-town">George</div>
@@ -457,11 +526,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- ── HOURS ── -->
 <section id="hours">
   <div class="container">
-    <div class="hours-grid">
-      <div class="fade-up">
-        <p class="section-label">Office Hours</p>
-        <h2 class="section-title">When to Reach Us</h2>
-        <table class="hours-table" id="hours-table" style="margin-top:2rem">
+    <p class="section-label fade-up">Office Hours</p>
+    <h2 class="section-title fade-up">When to Reach Us</h2>
+    <div class="hours-layout fade-up">
+      <div class="hours-left">
+        <table class="hours-table" id="hours-table">
           <tr class="open"><td>Monday</td><td>7:00 AM – 5:00 PM</td></tr>
           <tr class="open"><td>Tuesday</td><td>7:00 AM – 5:00 PM</td></tr>
           <tr class="open"><td>Wednesday</td><td>7:00 AM – 5:00 PM</td></tr>
@@ -472,7 +541,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         </table>
         <div class="hours-override" id="hours-override"></div>
       </div>
-      <div class="hours-info fade-up">
+      <div class="hours-right">
         <div class="hours-logo"><img src="assets/images/logo-sticker.jpg" alt="Denny's Sanitation logo"></div>
         <p class="hours-biz-name">Denny's Sanitation</p>
         <p class="hours-address">213 N. Union Street<br>Rock Rapids, IA 51246</p>
@@ -482,68 +551,39 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </section>
 
 <!-- ── FAQ ── -->
-<section id="faq" class="light-section">
+<section id="faq" class="alt-bg">
   <div class="container">
     <p class="section-label fade-up">Common Questions</p>
-    <h2 class="section-title fade-up">Frequently Asked Questions</h2>
+    <h2 class="section-title fade-up">FAQ</h2>
     <div class="faq-list fade-up">
-
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Can yard waste be disposed of in the garbage?
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><p>No. Yard waste must be dropped off at your city's tree dump.</p></div>
+        <button class="faq-q" aria-expanded="false">Can yard waste be disposed of in the garbage?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">No. Yard waste must be dropped off at your city's tree dump.</div></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          How do I dispose of appliances, furniture, and other large items?
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><p>Check with your local city office to find out when their Cleanup Day is and what permit or flag you may need to have your items collected.</p></div>
+        <button class="faq-q" aria-expanded="false">How do I dispose of appliances, furniture, and other large items?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Check with your local city office to find out when their Cleanup Day is and what permit or flag you may need to have your items collected.</div></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          The current month has 5 Thursdays. Who gets recycling picked up on the fifth Thursday?
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><p>Recycling service is only provided twice each month. There is no pickup on the fifth Thursday.</p></div>
+        <button class="faq-q" aria-expanded="false">The month has 5 Thursdays — who gets recycling on the fifth?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Recycling service is only provided twice each month. There is no pickup on the fifth Thursday.</div></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          What should I do with plastic shopping bags?
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><p>Plastic bags are now able to be recycled. Place them in your recycling bin on your scheduled recycling pickup day.</p></div>
+        <button class="faq-q" aria-expanded="false">What should I do with plastic shopping bags?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Plastic bags are now able to be recycled. Place them in your recycling bin on your scheduled recycling pickup day.</div></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          When should I set my garbage cart out for pickup?
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><p>Please have your cart at the curb by 7:00 AM on your scheduled pickup day. Place the cart with the lid opening facing the street, at least 3 feet away from any obstacles like mailboxes, cars, or other carts.</p></div>
+        <button class="faq-q" aria-expanded="false">When should I set my garbage cart out for pickup?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Please have your cart at the curb by 7:00 AM on your scheduled pickup day. Place the cart with the lid opening facing the street, at least 3 feet away from any obstacles like mailboxes, cars, or other carts.</div></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Do you adjust your schedule for holidays?
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><p>Yes. We may adjust garbage and recycling pickup schedules around major holidays. Check our Route Notices at the top of this page or our Facebook page for specific holiday schedule changes.</p></div>
+        <button class="faq-q" aria-expanded="false">Do you adjust your schedule for holidays?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We may adjust garbage and recycling pickup schedules around major holidays. Check our Route Notices at the top of this page or our Facebook page for specific holiday schedule changes.</div></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          What items are accepted for can redemption?
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><p>We accept Iowa-deposit cans, bottles, and 2-liter bottles from brands including 7-Up, Coke, Pepsi, Miller, Budweiser, and others. We do not accept sports drinks (Gatorade, Powerade), coffee products, Arizona Tea, water bottles, milk jugs, or fruit/vegetable tins. Items must be clean, empty, and free from garbage.</p></div>
+        <button class="faq-q" aria-expanded="false">What items are accepted for can redemption?<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">We accept Iowa-deposit cans, bottles, and 2-liter bottles from brands including 7-Up, Coke, Pepsi, Miller, Budweiser, and others. We do not accept sports drinks (Gatorade, Powerade), coffee products, Arizona Tea, water bottles, milk jugs, or fruit/vegetable tins. Items must be clean, empty, and free from garbage.</div></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -553,26 +593,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="container">
     <p class="section-label fade-up">Billing</p>
     <h2 class="section-title fade-up">Payment Policies</h2>
-    <p class="section-sub fade-up" style="margin-bottom:2.5rem">Please review our payment policies below. Contact us with any questions.</p>
-
-    <div class="policy-card fade-up">
-      <h3>New Long-Term Service</h3>
-      <p>Denny's Sanitation requires one of two things to set up a new long-term service: a <strong>$50 deposit</strong> that stays in the account for one year (after a year of good payments, the $50 is credited back to the customer's account), or enrollment in <strong>auto-pay via credit card or ACH</strong>. If auto-pay is set up, no deposit is required.</p>
-    </div>
-
-    <div class="policy-card fade-up">
-      <h3>New Short-Term Service</h3>
-      <p>A <strong>down payment via credit card</strong> is required. This covers the delivery fee and first service on the container. The credit card stays on file until services are completed and the account is paid in full. We will not charge for additional services after the down payment is used up <strong>unless the account is 2 months past due</strong>, at which point Denny's Sanitation reserves the right to charge the card.</p>
-    </div>
-
-    <div class="policy-card fade-up">
-      <h3>Roll-Offs</h3>
-      <p>A <strong>down payment via credit card</strong> is required. The amount is determined based on location and current pricing. The credit card stays on file until services are completed. <strong>After the down payment is used up, Denny's Sanitation reserves the right to auto-run the credit card for services owed</strong>, either monthly or when services are completed.</p>
-    </div>
-
-    <div class="policy-card fade-up">
-      <h3>Accounts with Prior Late Fees</h3>
-      <p>Denny's Sanitation reserves the right to not extend credit on accounts that have previously had a late fee or past-due balance. A <strong>down payment via credit card</strong> may be required, and the card will stay on file until services are completed. <strong>Denny's Sanitation reserves the right to auto-run the card before any service is performed.</strong></p>
+    <p class="section-sub fade-up" style="margin-bottom:2.5rem">Please review our payment policies below.</p>
+    <div class="policies-grid fade-up">
+      <div class="policy-card">
+        <h3>New Long-Term Service</h3>
+        <p>We require either a <strong>$50 deposit</strong> that stays in the account for one year (credited back after a year of good payments), or enrollment in <strong>auto-pay via credit card or ACH</strong>. If auto-pay is set up, no deposit is required.</p>
+      </div>
+      <div class="policy-card">
+        <h3>New Short-Term Service</h3>
+        <p>A <strong>down payment via credit card</strong> covers the delivery fee and first service. The card stays on file until paid in full. We will not charge further <strong>unless the account is 2 months past due</strong>.</p>
+      </div>
+      <div class="policy-card">
+        <h3>Roll-Offs</h3>
+        <p>A <strong>credit card down payment</strong> is required, amount based on location and pricing. <strong>After the down payment is used up, we reserve the right to auto-run the card</strong> monthly or upon completion.</p>
+      </div>
+      <div class="policy-card">
+        <h3>Prior Late Fees</h3>
+        <p>We reserve the right to not extend credit on previously late accounts. A <strong>credit card down payment</strong> may be required, and <strong>we may auto-run the card before any service is performed</strong>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -580,77 +618,55 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <!-- ── CTA BANNER ── -->
 <div class="cta-banner">
   <h2>Need to Schedule a Pickup?</h2>
-  <p>Give us a call or send us a message. We're here to help.</p>
-  <a href="tel:+17124722293" class="btn btn-phone">
-    <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>
+  <p>Give us a call or send us a message — we're here to help.</p>
+  <a href="tel:+17124722293" class="btn btn-white" style="position:relative;z-index:1">
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>
     Call (712) 472-2293
   </a>
 </div>
 
 <!-- ── CONTACT ── -->
-<section id="contact" class="dark-section">
+<section id="contact" class="dark-bg">
   <div class="container">
     <p class="section-label fade-up">Get in Touch</p>
     <h2 class="section-title fade-up">Contact Us</h2>
-
-    <div class="contact-grid">
-      <div>
-        <div class="contact-map fade-up">
-          <iframe
-            src="https://maps.google.com/maps?q=213+N+Union+St,+Rock+Rapids,+IA+51246&output=embed"
-            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            title="Denny's Sanitation location">
-          </iframe>
+    <div class="contact-layout fade-up">
+      <div class="contact-left">
+        <div class="contact-map">
+          <iframe src="https://maps.google.com/maps?q=213+N+Union+St,+Rock+Rapids,+IA+51246&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Denny's Sanitation location"></iframe>
         </div>
-        <div class="contact-details fade-up" style="margin-top:2rem">
-          <div>
-            <p class="contact-label">Address</p>
-            <p class="contact-value">213 N. Union Street<br>Rock Rapids, IA 51246</p>
-          </div>
-          <div>
-            <p class="contact-label">Phone</p>
-            <p class="contact-value"><a href="tel:+17124722293">(712) 472-2293</a></p>
-          </div>
-          <div>
-            <p class="contact-label">Email</p>
-            <p class="contact-value"><a href="mailto:dennysanitation@gmail.com">dennysanitation@gmail.com</a></p>
-          </div>
-          <div>
-            <p class="contact-label">Follow Us</p>
-            <div class="contact-social">
-              <a href="https://www.facebook.com/DennysSanitation" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-                Facebook
-              </a>
-            </div>
+        <div class="contact-detail">
+          <p class="contact-label">Address</p>
+          <p class="contact-value">213 N. Union Street<br>Rock Rapids, IA 51246</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-label">Phone</p>
+          <p class="contact-value"><a href="tel:+17124722293">(712) 472-2293</a></p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-label">Email</p>
+          <p class="contact-value"><a href="mailto:dennysanitation@gmail.com">dennysanitation@gmail.com</a></p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-label">Follow Us</p>
+          <div class="contact-social">
+            <a href="https://www.facebook.com/DennysSanitation" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+              Facebook
+            </a>
           </div>
         </div>
       </div>
-      <div class="fade-up">
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--white);margin-bottom:1.25rem;letter-spacing:0.04em">Send Us a Message</h3>
+      <div class="contact-right">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem;letter-spacing:0.06em">Send Us a Message</h3>
         <form class="form" id="contact-form">
           <div class="form-row">
-            <div>
-              <label for="c-name">Name *</label>
-              <input type="text" id="c-name" name="name" required/>
-            </div>
-            <div>
-              <label for="c-phone">Phone</label>
-              <input type="tel" id="c-phone" name="phone"/>
-            </div>
+            <div><label for="c-name">Name *</label><input type="text" id="c-name" name="name" required/></div>
+            <div><label for="c-phone">Phone</label><input type="tel" id="c-phone" name="phone"/></div>
           </div>
-          <div>
-            <label for="c-email">Email *</label>
-            <input type="email" id="c-email" name="email" required/>
-          </div>
-          <div>
-            <label for="c-subject">Subject</label>
-            <input type="text" id="c-subject" name="subject" placeholder="e.g. New service request, schedule question"/>
-          </div>
-          <div>
-            <label for="c-msg">Message *</label>
-            <textarea id="c-msg" name="message" placeholder="How can we help?" required></textarea>
-          </div>
+          <div><label for="c-email">Email *</label><input type="email" id="c-email" name="email" required/></div>
+          <div><label for="c-subject">Subject</label><input type="text" id="c-subject" name="subject" placeholder="e.g. New service request, schedule question"/></div>
+          <div><label for="c-msg">Message *</label><textarea id="c-msg" name="message" placeholder="How can we help?" required></textarea></div>
           <div class="form-msg" id="contact-msg"></div>
           <button type="submit" class="form-submit" id="contact-btn">Send Message</button>
         </form>
@@ -661,27 +677,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-inner">
-    <span class="footer-logo">Denny's Sanitation</span>
-    <ul class="footer-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#hours">Hours</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#policies">Policies</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <p class="footer-copy">&copy; <span id="footer-year"></span> Denny's Sanitation &nbsp;&middot;&nbsp; Rock Rapids, Iowa &nbsp;&middot;&nbsp; Locally owned and operated since 1984</p>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand">Denny's Sanitation</div>
+      <p class="footer-brand-sub">Locally owned and operated garbage &amp; recycling service. Serving northwest Iowa communities since 1984.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Quick Links</div>
+      <a href="#services">Services</a>
+      <a href="#hours">Hours</a>
+      <a href="#faq">FAQ</a>
+      <a href="#policies">Policies</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <a href="tel:+17124722293">(712) 472-2293</a>
+      <a href="mailto:dennysanitation@gmail.com">dennysanitation@gmail.com</a>
+      <a href="https://www.facebook.com/DennysSanitation" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Denny's Sanitation &middot; 213 N. Union Street, Rock Rapids, IA 51246 &middot; Locally owned since 1984</p>
   </div>
 </footer>
 
 <script type="module">
-// ════════════════════════════════════════════════════════
-// FIREBASE
-// ════════════════════════════════════════════════════════
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-// ⚠️ PLACEHOLDER — replace with your real Firebase config
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "dennys-sanitation.firebaseapp.com",
@@ -692,21 +716,11 @@ const firebaseConfig = {
 };
 
 let db;
-try {
-  const app = initializeApp(firebaseConfig);
-  db = getFirestore(app);
-} catch(e) {
-  console.warn('Firebase not configured — running in static mode.');
-}
+try { const app = initializeApp(firebaseConfig); db = getFirestore(app); } catch(e) { console.warn('Firebase not configured — running in static mode.'); }
 
-// ════════════════════════════════════════════════════════
-// FOOTER YEAR
-// ════════════════════════════════════════════════════════
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-// ════════════════════════════════════════════════════════
-// LOAD ROUTE NOTICES
-// ════════════════════════════════════════════════════════
+// ── Route Notices ──
 async function loadNotices() {
   if (!db) return;
   try {
@@ -715,45 +729,36 @@ async function loadNotices() {
     const notices = [];
     snap.forEach(d => {
       const data = d.data();
-      // Skip expired notices
-      if (data.expires) {
-        const exp = new Date(data.expires + 'T23:59:59');
-        if (exp < today) return;
-      }
+      if (data.expires) { const exp = new Date(data.expires + 'T23:59:59'); if (exp < today) return; }
       notices.push({ id: d.id, ...data });
     });
-    // Sort by order field
-    notices.sort((a,b) => (a.order || 0) - (b.order || 0));
+    notices.sort((a,b) => (a.order||0) - (b.order||0));
     renderNotices(notices);
-  } catch(e) {
-    console.warn('Could not load notices:', e);
-  }
+  } catch(e) { console.warn('Could not load notices:', e); }
 }
 
 function renderNotices(notices) {
   const section = document.getElementById('notices-section');
   const list = document.getElementById('notices-list');
-  if (!notices.length) { section.style.display = 'none'; return; }
-  section.style.display = 'block';
+  if (!notices.length) { section.classList.remove('visible'); return; }
+  section.classList.add('visible');
   list.innerHTML = notices.map(n => `
     <div class="notice-item">
-      <p class="notice-title">${escHtml(n.title)}</p>
-      <p class="notice-body">${escHtml(n.body)}</p>
-    </div>
-  `).join('');
+      <div class="notice-bullet"></div>
+      <div>
+        <p class="notice-title">${esc(n.title)}</p>
+        <p class="notice-body">${esc(n.body)}</p>
+      </div>
+    </div>`).join('');
 }
 
-// ════════════════════════════════════════════════════════
-// LOAD SITE CONFIG (announcement, hours override)
-// ════════════════════════════════════════════════════════
+// ── Site Config ──
 async function loadConfig() {
   if (!db) return;
   try {
     const snap = await getDoc(doc(db, 'config', 'site'));
     if (!snap.exists()) return;
     const cfg = snap.data();
-
-    // Announcement banner
     if (cfg.announcement && cfg.announcement.trim()) {
       const bar = document.getElementById('announcement-bar');
       const hero = document.querySelector('.hero');
@@ -761,109 +766,55 @@ async function loadConfig() {
       bar.classList.add('visible');
       if (hero) hero.classList.add('with-announcement');
     }
-
-    // Hours override
     if (cfg.hoursOverride && cfg.hoursOverride.trim()) {
       const el = document.getElementById('hours-override');
       el.textContent = cfg.hoursOverride;
       el.classList.add('visible');
     }
-  } catch(e) {
-    console.warn('Could not load config:', e);
-  }
+  } catch(e) { console.warn('Could not load config:', e); }
 }
 
-// ════════════════════════════════════════════════════════
-// CONTACT FORM (EmailJS — placeholder)
-// ════════════════════════════════════════════════════════
+// ── Contact Form ──
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('contact-btn');
   const msg = document.getElementById('contact-msg');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  msg.className = 'form-msg';
-
-  // If EmailJS is configured, send via EmailJS
+  btn.disabled = true; btn.textContent = 'Sending...'; msg.className = 'form-msg';
   if (typeof emailjs !== 'undefined' && emailjs._userID) {
-    try {
-      await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this);
-      msg.className = 'form-msg success';
-      msg.textContent = 'Message sent! We\'ll get back to you as soon as possible.';
-      this.reset();
-    } catch(err) {
-      msg.className = 'form-msg error';
-      msg.textContent = 'Something went wrong. Please call us at (712) 472-2293.';
-    }
-  } else {
-    // Fallback — show mailto link
-    msg.className = 'form-msg error';
-    msg.textContent = 'Contact form is not yet configured. Please email dennysanitation@gmail.com or call (712) 472-2293.';
-  }
-  btn.disabled = false;
-  btn.textContent = 'Send Message';
+    try { await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this); msg.className = 'form-msg success'; msg.textContent = "Message sent! We'll get back to you soon."; this.reset(); } catch(err) { msg.className = 'form-msg error'; msg.textContent = 'Something went wrong. Please call us at (712) 472-2293.'; }
+  } else { msg.className = 'form-msg error'; msg.textContent = 'Contact form not yet configured. Please email dennysanitation@gmail.com or call (712) 472-2293.'; }
+  btn.disabled = false; btn.textContent = 'Send Message';
 });
 
-// ════════════════════════════════════════════════════════
-// FAQ ACCORDION
-// ════════════════════════════════════════════════════════
+// ── FAQ Accordion ──
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const answer = btn.nextElementSibling;
     const isOpen = answer.classList.contains('open');
-    // Close all
     document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
     document.querySelectorAll('.faq-q').forEach(q => { q.classList.remove('open'); q.setAttribute('aria-expanded','false'); });
-    // Open clicked (if it wasn't already open)
-    if (!isOpen) {
-      answer.classList.add('open');
-      btn.classList.add('open');
-      btn.setAttribute('aria-expanded','true');
-    }
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
   });
 });
 
-// ════════════════════════════════════════════════════════
-// SCROLL ANIMATIONS
-// ════════════════════════════════════════════════════════
+// ── Scroll Animation ──
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.08 });
-
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// ════════════════════════════════════════════════════════
-// BURGER MENU
-// ════════════════════════════════════════════════════════
+// ── Burger Menu ──
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('nav-links');
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  burger.classList.remove('open');
-  navLinks.classList.remove('open');
-}));
+burger.addEventListener('click', () => { burger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); navLinks.classList.remove('open'); }));
 
-// ════════════════════════════════════════════════════════
-// UTILS
-// ════════════════════════════════════════════════════════
-function escHtml(str) {
-  if (!str) return '';
-  const d = document.createElement('div');
-  d.textContent = str;
-  return d.innerHTML;
-}
+// ── Utils ──
+function esc(str) { if (!str) return ''; const d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
 
-// ════════════════════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════════════════════
+// ── Init ──
 loadNotices();
 loadConfig();
 </script>
-
 </body>
 </html>
