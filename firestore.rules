@@ -8,6 +8,30 @@ service cloud.firestore {
       allow write: if request.auth != null;
     }
 
+    // Services — anyone can read, only authenticated users can write
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // FAQs — anyone can read, only authenticated users can write
+    match /faqs/{faqId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Policies — anyone can read, only authenticated users can write
+    match /policies/{policyId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Site images — anyone can read, only authenticated users can write
+    match /siteImages/{imageId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
     // Site config — anyone can read, only authenticated users can write
     match /config/{docId} {
       allow read: if true;
