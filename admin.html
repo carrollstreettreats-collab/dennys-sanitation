@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Denny's Sanitation — Admin</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="icon" type="image/png" href="assets/images/dennys-logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -17,7 +17,7 @@
   --darker:#111111;
   --text:#1C1C1C;
   --text-mid:#555;
-  --text-light:#888;
+  --text-light:#767676;
   --border:#E0DCDA;
   --danger:#c0392b;
   --danger-bg:#fdecea;
@@ -86,7 +86,7 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 .btn-order:disabled{opacity:0.25;cursor:not-allowed}
 
 /* ── MODAL ── */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay{display:none;position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,0.5);z-index:500;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{display:flex}
 .modal{background:var(--white);border-radius:8px;padding:2rem;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;position:relative}
 .modal-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.4rem;text-transform:uppercase;color:var(--text);margin-bottom:1.5rem}
@@ -138,7 +138,7 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 .hours-row input[type="time"]:focus{border-color:var(--red);outline:none}
 .toggle{position:relative;width:40px;height:22px;display:inline-block}
 .toggle input{opacity:0;width:0;height:0}
-.toggle .slider{position:absolute;inset:0;background:#ccc;border-radius:22px;cursor:pointer;transition:background 0.2s}
+.toggle .slider{position:absolute;top:0;right:0;bottom:0;left:0;background:#ccc;border-radius:22px;cursor:pointer;transition:background 0.2s}
 .toggle .slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:var(--white);border-radius:50%;transition:transform 0.2s}
 .toggle input:checked+.slider{background:var(--red)}
 .toggle input:checked+.slider::before{transform:translateX(18px)}
@@ -168,6 +168,18 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 /* ── FILE INPUT HIDDEN ── */
 .file-input-hidden{position:absolute;width:0;height:0;opacity:0;overflow:hidden}
 
+/* ── SCREEN READER ONLY ── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999}
+.skip-link:focus{position:fixed;top:0;left:0;width:auto;height:auto;padding:1rem 1.5rem;background:#333;color:#fff;font-size:1rem;font-weight:700;z-index:9999;text-decoration:none}
+
+/* ── FOCUS VISIBLE ── */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+/* ── TOUCH TARGETS ── */
+.tab-btn{min-height:44px}
+.btn-edit,.btn-del,.btn-order{min-height:44px;min-width:44px}
+
 /* ── MOBILE ── */
 @media(max-width:700px){
   header{padding:0 1rem}
@@ -186,6 +198,9 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 </head>
 <body>
 
+<!-- Skip Navigation -->
+<a href="#admin-main" class="skip-link">Skip to main content</a>
+
 <!-- ── LOGIN ── -->
 <div id="login-screen">
   <div class="login-card">
@@ -196,7 +211,7 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
     <input type="email" id="login-email" placeholder="owner@email.com" autocomplete="username"/>
     <label for="login-pass">Password</label>
     <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password"/>
-    <p class="login-err" id="login-err"></p>
+    <p class="login-err" id="login-err" role="alert" aria-live="polite"></p>
     <button class="login-btn" id="login-btn">Sign In</button>
     <p style="text-align:center;margin-top:1rem">
       <button id="forgot-btn" style="background:none;border:none;font-size:0.8rem;color:var(--text-light);cursor:pointer;text-decoration:underline">Forgot password?</button>
@@ -214,18 +229,18 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
     </div>
   </header>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="notices">Notices</button>
-    <button class="tab-btn" data-tab="services">Services</button>
-    <button class="tab-btn" data-tab="faq">FAQ</button>
-    <button class="tab-btn" data-tab="policies">Policies</button>
-    <button class="tab-btn" data-tab="hours">Hours</button>
-    <button class="tab-btn" data-tab="images">Images</button>
-    <button class="tab-btn" data-tab="headings">Headings</button>
-    <button class="tab-btn" data-tab="settings">Settings</button>
+  <div class="tabs" role="tablist" aria-label="Admin sections">
+    <button class="tab-btn active" data-tab="notices" role="tab" aria-selected="true">Notices</button>
+    <button class="tab-btn" data-tab="services" role="tab" aria-selected="false">Services</button>
+    <button class="tab-btn" data-tab="faq" role="tab" aria-selected="false">FAQ</button>
+    <button class="tab-btn" data-tab="policies" role="tab" aria-selected="false">Policies</button>
+    <button class="tab-btn" data-tab="hours" role="tab" aria-selected="false">Hours</button>
+    <button class="tab-btn" data-tab="images" role="tab" aria-selected="false">Images</button>
+    <button class="tab-btn" data-tab="headings" role="tab" aria-selected="false">Headings</button>
+    <button class="tab-btn" data-tab="settings" role="tab" aria-selected="false">Settings</button>
   </div>
 
-  <main>
+  <main id="admin-main">
 
     <!-- ══════ NOTICES TAB ══════ -->
     <div class="tab-panel active" id="tab-notices">
@@ -329,6 +344,7 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
       <div class="settings-card">
         <h3>Can Redemption Hours</h3>
         <p>Describe when can redemption is available. This is displayed as-is on the website.</p>
+        <label for="can-redemption-hours" class="sr-only">Can redemption hours</label>
         <textarea id="can-redemption-hours" placeholder="e.g. Mon-Thu 12-5 PM"></textarea>
       </div>
       <button class="settings-save" onclick="saveHours()" style="margin-top:0.5rem">Save Hours</button>
@@ -406,6 +422,7 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
       <div class="settings-card">
         <h3>Announcement Banner</h3>
         <p>Show a message in a red bar at the top of the website. Leave blank to hide.</p>
+        <label for="setting-announcement" class="sr-only">Announcement text</label>
         <textarea id="setting-announcement" placeholder="e.g. Office closed July 4th — all Friday routes will run Thursday July 3rd."></textarea>
         <button class="settings-save" onclick="saveAnnouncement()">Save</button>
       </div>
@@ -413,6 +430,7 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
       <div class="settings-card">
         <h3>Hours Override</h3>
         <p>Temporarily display a special hours message (e.g., holiday closures). Leave blank to hide.</p>
+        <label for="setting-hours-override" class="sr-only">Hours override text</label>
         <textarea id="setting-hours-override" placeholder="e.g. Our office will be closed Dec 24–25 for the Christmas holiday."></textarea>
         <button class="settings-save" onclick="saveHoursOverride()">Save</button>
       </div>
@@ -420,13 +438,25 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
       <div class="settings-card">
         <h3>Contact Information</h3>
         <p>Update the phone number, email, and address shown on the website.</p>
-        <label>Phone</label>
-        <input type="text" id="setting-phone" placeholder="(712) 555-1234"/>
-        <label>Email</label>
-        <input type="email" id="setting-email" placeholder="info@dennyssanitation.com"/>
-        <label>Address</label>
-        <input type="text" id="setting-address" placeholder="123 Main St, Rock Rapids, IA 51246"/>
+        <label for="setting-phone">Phone</label>
+        <input type="text" id="setting-phone" placeholder="(712) 555-1234" autocomplete="tel"/>
+        <label for="setting-email">Email</label>
+        <input type="email" id="setting-email" placeholder="info@dennyssanitation.com" autocomplete="email"/>
+        <label for="setting-address">Address</label>
+        <input type="text" id="setting-address" placeholder="123 Main St, Rock Rapids, IA 51246" autocomplete="street-address"/>
         <button class="settings-save" onclick="saveContact()">Save Contact Info</button>
+      </div>
+
+      <div class="settings-card">
+        <h3>Contact Form (EmailJS)</h3>
+        <p>Connect the "Send us a message" form so emails go to your inbox. Get these from <a href="https://www.emailjs.com" target="_blank" style="color:var(--red)">emailjs.com</a> (free account).</p>
+        <label for="setting-ejs-public">Public Key</label>
+        <input type="text" id="setting-ejs-public" placeholder="e.g. abc123XYZ"/>
+        <label for="setting-ejs-service">Service ID</label>
+        <input type="text" id="setting-ejs-service" placeholder="e.g. service_abc123"/>
+        <label for="setting-ejs-template">Template ID</label>
+        <input type="text" id="setting-ejs-template" placeholder="e.g. template_abc123"/>
+        <button class="settings-save" onclick="saveEmailJS()">Save EmailJS Config</button>
       </div>
 
       <div class="settings-card">
@@ -440,16 +470,16 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 </div>
 
 <!-- ── NOTICE MODAL ── -->
-<div class="modal-overlay" id="notice-modal" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="modal-overlay" id="notice-modal" role="dialog" aria-modal="true" aria-label="Notice editor" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
-    <button class="modal-close" onclick="document.getElementById('notice-modal').classList.remove('open')">&times;</button>
+    <button class="modal-close" aria-label="Close dialog" onclick="document.getElementById('notice-modal').classList.remove('open')">&times;</button>
     <h2 class="modal-title" id="notice-modal-title">Add Notice</h2>
     <div class="modal-form">
       <input type="hidden" id="notice-id"/>
-      <div><label>Title *</label><input type="text" id="notice-title" placeholder="e.g. 4th of July Schedule Change"/></div>
-      <div><label>Body *</label><textarea id="notice-body" placeholder="e.g. Wednesday routes will run Thursday."></textarea></div>
+      <div><label for="notice-title">Title *</label><input type="text" id="notice-title" placeholder="e.g. 4th of July Schedule Change"/></div>
+      <div><label for="notice-body">Body *</label><textarea id="notice-body" placeholder="e.g. Wednesday routes will run Thursday."></textarea></div>
       <div>
-        <label>Expires On (optional)</label>
+        <label for="notice-expires">Expires On (optional)</label>
         <input type="date" id="notice-expires"/>
         <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.3rem">Leave blank to show indefinitely.</p>
       </div>
@@ -462,16 +492,16 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 </div>
 
 <!-- ── SERVICE MODAL ── -->
-<div class="modal-overlay" id="service-modal" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="modal-overlay" id="service-modal" role="dialog" aria-modal="true" aria-label="Service editor" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
-    <button class="modal-close" onclick="document.getElementById('service-modal').classList.remove('open')">&times;</button>
+    <button class="modal-close" aria-label="Close dialog" onclick="document.getElementById('service-modal').classList.remove('open')">&times;</button>
     <h2 class="modal-title" id="service-modal-title">Add Service</h2>
     <div class="modal-form">
       <input type="hidden" id="service-id"/>
-      <div><label>Tag</label><input type="text" id="service-tag" placeholder="e.g. Residential"/></div>
-      <div><label>Name *</label><input type="text" id="service-name" placeholder="e.g. Weekly Garbage Pickup"/></div>
-      <div><label>Description</label><input type="text" id="service-desc" placeholder="Short description"/></div>
-      <div><label>Details</label><textarea id="service-details" placeholder="Detailed info (multi-line)"></textarea></div>
+      <div><label for="service-tag">Tag</label><input type="text" id="service-tag" placeholder="e.g. Residential"/></div>
+      <div><label for="service-name">Name *</label><input type="text" id="service-name" placeholder="e.g. Weekly Garbage Pickup"/></div>
+      <div><label for="service-desc">Description</label><input type="text" id="service-desc" placeholder="Short description"/></div>
+      <div><label for="service-details">Details</label><textarea id="service-details" placeholder="Detailed info (multi-line)"></textarea></div>
       <div>
         <label>Image</label>
         <input type="file" accept="image/*" id="service-img-input"/>
@@ -488,14 +518,14 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 </div>
 
 <!-- ── FAQ MODAL ── -->
-<div class="modal-overlay" id="faq-modal" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="modal-overlay" id="faq-modal" role="dialog" aria-modal="true" aria-label="FAQ editor" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
-    <button class="modal-close" onclick="document.getElementById('faq-modal').classList.remove('open')">&times;</button>
+    <button class="modal-close" aria-label="Close dialog" onclick="document.getElementById('faq-modal').classList.remove('open')">&times;</button>
     <h2 class="modal-title" id="faq-modal-title">Add FAQ</h2>
     <div class="modal-form">
       <input type="hidden" id="faq-id"/>
-      <div><label>Question *</label><input type="text" id="faq-question" placeholder="e.g. What day is my pickup?"/></div>
-      <div><label>Answer *</label><textarea id="faq-answer" placeholder="The answer to the question."></textarea></div>
+      <div><label for="faq-question">Question *</label><input type="text" id="faq-question" placeholder="e.g. What day is my pickup?"/></div>
+      <div><label for="faq-answer">Answer *</label><textarea id="faq-answer" placeholder="The answer to the question."></textarea></div>
     </div>
     <div class="modal-footer">
       <button class="modal-cancel" onclick="document.getElementById('faq-modal').classList.remove('open')">Cancel</button>
@@ -505,14 +535,14 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 </div>
 
 <!-- ── POLICY MODAL ── -->
-<div class="modal-overlay" id="policy-modal" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="modal-overlay" id="policy-modal" role="dialog" aria-modal="true" aria-label="Policy editor" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
-    <button class="modal-close" onclick="document.getElementById('policy-modal').classList.remove('open')">&times;</button>
+    <button class="modal-close" aria-label="Close dialog" onclick="document.getElementById('policy-modal').classList.remove('open')">&times;</button>
     <h2 class="modal-title" id="policy-modal-title">Add Policy</h2>
     <div class="modal-form">
       <input type="hidden" id="policy-id"/>
-      <div><label>Title *</label><input type="text" id="policy-title" placeholder="e.g. Late Payment Fee"/></div>
-      <div><label>Body *</label><textarea id="policy-body" placeholder="Policy details."></textarea></div>
+      <div><label for="policy-title">Title *</label><input type="text" id="policy-title" placeholder="e.g. Late Payment Fee"/></div>
+      <div><label for="policy-body">Body *</label><textarea id="policy-body" placeholder="Policy details."></textarea></div>
     </div>
     <div class="modal-footer">
       <button class="modal-cancel" onclick="document.getElementById('policy-modal').classList.remove('open')">Cancel</button>
@@ -522,7 +552,7 @@ main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 </div>
 
 <!-- ── TOAST ── -->
-<div id="toast"></div>
+<div id="toast" role="alert" aria-live="assertive"></div>
 
 <script type="module">
 // ════════════════════════════════════════════════════════
@@ -692,11 +722,19 @@ document.getElementById('forgot-btn').addEventListener('click', async () => {
 // ════════════════════════════════════════════════════════
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
   });
+});
+
+// ── Close modals with Escape key ──
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
 });
 
 // ════════════════════════════════════════════════════════
@@ -724,6 +762,16 @@ async function loadSiteConfig() {
     document.getElementById('setting-phone').value   = c.phone || '';
     document.getElementById('setting-email').value   = c.email || '';
     document.getElementById('setting-address').value = c.address || '';
+    // EmailJS
+    try {
+      const ejsSnap = await getDoc(doc(db, 'config', 'emailjs'));
+      if (ejsSnap.exists()) {
+        const ejs = ejsSnap.data();
+        document.getElementById('setting-ejs-public').value = ejs.publicKey || '';
+        document.getElementById('setting-ejs-service').value = ejs.serviceId || '';
+        document.getElementById('setting-ejs-template').value = ejs.templateId || '';
+      }
+    } catch(e) {}
     // Hours
     renderHoursForm();
     // Can redemption
@@ -793,7 +841,7 @@ window.moveNotice = async (id, dir) => {
   const swapIdx = idx + dir;
   if (swapIdx < 0 || swapIdx >= notices.length) return;
   const a = notices[idx], b = notices[swapIdx];
-  const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
+  const aOrder = (a.order != null ? a.order : idx), bOrder = (b.order != null ? b.order : swapIdx);
   try {
     await Promise.all([
       updateDoc(doc(db, 'notices', a.id), { order: bOrder }),
@@ -887,7 +935,7 @@ window.moveService = async (id, dir) => {
   const swapIdx = idx + dir;
   if (swapIdx < 0 || swapIdx >= services.length) return;
   const a = services[idx], b = services[swapIdx];
-  const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
+  const aOrder = (a.order != null ? a.order : idx), bOrder = (b.order != null ? b.order : swapIdx);
   try {
     await Promise.all([
       updateDoc(doc(db, 'services', a.id), { order: bOrder }),
@@ -992,7 +1040,7 @@ window.moveFaq = async (id, dir) => {
   const swapIdx = idx + dir;
   if (swapIdx < 0 || swapIdx >= faqs.length) return;
   const a = faqs[idx], b = faqs[swapIdx];
-  const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
+  const aOrder = (a.order != null ? a.order : idx), bOrder = (b.order != null ? b.order : swapIdx);
   try {
     await Promise.all([
       updateDoc(doc(db, 'faqs', a.id), { order: bOrder }),
@@ -1077,7 +1125,7 @@ window.movePolicy = async (id, dir) => {
   const swapIdx = idx + dir;
   if (swapIdx < 0 || swapIdx >= policies.length) return;
   const a = policies[idx], b = policies[swapIdx];
-  const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
+  const aOrder = (a.order != null ? a.order : idx), bOrder = (b.order != null ? b.order : swapIdx);
   try {
     await Promise.all([
       updateDoc(doc(db, 'policies', a.id), { order: bOrder }),
@@ -1221,7 +1269,8 @@ document.getElementById('img-file-input').addEventListener('change', async (e) =
 });
 
 window.resetImage = async (imgId) => {
-  if (!confirm(`Reset "${IMAGE_IDS.find(i => i.id === imgId)?.label}" to default?`)) return;
+  var found = IMAGE_IDS.find(function(i){ return i.id === imgId; });
+  if (!confirm('Reset "' + (found ? found.label : imgId) + '" to default?')) return;
   try {
     await deleteDoc(doc(db, 'siteImages', imgId));
     document.getElementById(`img-preview-${imgId}`).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='150'%3E%3Crect fill='%23E0DCDA' width='220' height='150'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23888' font-family='sans-serif' font-size='14'%3ENo image%3C/text%3E%3C/svg%3E";
@@ -1290,6 +1339,19 @@ window.saveContact = async () => {
     siteConfig.contact = contact;
     toast('Contact info saved', 'success');
   } catch(e) { toast('Could not save contact info', 'error'); }
+};
+
+window.saveEmailJS = async () => {
+  const data = {
+    publicKey:  document.getElementById('setting-ejs-public').value.trim(),
+    serviceId:  document.getElementById('setting-ejs-service').value.trim(),
+    templateId: document.getElementById('setting-ejs-template').value.trim()
+  };
+  if (!data.publicKey || !data.serviceId || !data.templateId) { toast('All 3 fields are required', 'error'); return; }
+  try {
+    await setDoc(doc(db, 'config', 'emailjs'), data);
+    toast('EmailJS config saved — contact form is live!', 'success');
+  } catch(e) { toast('Could not save EmailJS config', 'error'); }
 };
 
 window.exportBackup = async () => {

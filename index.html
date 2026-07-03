@@ -10,7 +10,8 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://dennys-sanitation.web.app"/>
 <meta property="og:image" content="https://dennys-sanitation.web.app/assets/images/hero-fleet.jpg"/>
-<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="icon" type="image/png" href="assets/images/dennys-logo.png"/>
+<link rel="apple-touch-icon" href="assets/images/dennys-logo.png"/>
 <link rel="apple-touch-icon" href="assets/images/logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 
@@ -53,7 +54,7 @@
   --dark-mid: #253041;
   --charcoal: #3A4556;
   --slate: #5C6B7F;
-  --gray: #8896A7;
+  --gray: #6B7B8D;
   --silver: #B8C4D0;
   --light: #F0F2F5;
   --warm-light: #F8F7F4;
@@ -87,10 +88,11 @@ body { font-family: var(--font-body); color: var(--dark); background: var(--whit
 
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-brand-icon {
-  width: 38px; height: 38px; border-radius: 10px;
-  background: var(--red); display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--white);
-  letter-spacing: -0.5px; transition: transform 0.3s var(--ease-bounce);
+  width: 38px; height: 38px; border-radius: 10px; overflow: hidden;
+  transition: transform 0.3s var(--ease-bounce);
+}
+.nav-brand-icon img {
+  width: 100%; height: 100%; object-fit: cover;
 }
 .nav-brand:hover .nav-brand-icon { transform: rotate(-6deg) scale(1.05); }
 .nav-brand-text { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--white); line-height: 1.2; }
@@ -153,14 +155,14 @@ body { font-family: var(--font-body); color: var(--dark); background: var(--whit
 }
 .hero.with-announcement { padding-top: 112px; }
 .hero-bg {
-  position: absolute; inset: 0; z-index: 1;
+  position: absolute; top:0;right:0;bottom:0;left:0; z-index: 1;
 }
 .hero-bg img {
   width: 100%; height: 100%; object-fit: cover;
   filter: brightness(0.35) contrast(1.1);
 }
 .hero-bg::after {
-  content: ''; position: absolute; inset: 0;
+  content: ''; position: absolute; top:0;right:0;bottom:0;left:0;
   background: linear-gradient(135deg, rgba(27,36,50,0.85) 0%, rgba(27,36,50,0.4) 50%, rgba(198,40,40,0.2) 100%);
 }
 .hero-content {
@@ -195,7 +197,10 @@ body { font-family: var(--font-body); color: var(--dark); background: var(--whit
   font-style: normal; color: var(--red);
   background: linear-gradient(135deg, #E53935, #C62828);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background-clip: text; color: transparent;
+}
+@supports not (background-clip: text) {
+  .hero h1 em { color: var(--red); }
 }
 .hero-desc {
   font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.7);
@@ -338,11 +343,10 @@ section { padding: 100px 24px; }
 .s-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
 /* Cards with images keep their image visible */
 .s-card-img {
-  width: 100%; aspect-ratio: 16/9; overflow: hidden;
-  position: relative;
+  width: 100%; overflow: hidden; height: 0; padding-bottom: 56.25%; position: relative;
 }
 .s-card-img img {
-  width: 100%; height: 100%; object-fit: cover;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.5s var(--ease);
 }
 .s-card:hover .s-card-img img { transform: scale(1.04); }
@@ -405,7 +409,7 @@ section { padding: 100px 24px; }
 }
 .area-map-wrap img { width: 100%; display: block; }
 .area-overlay {
-  position: absolute; inset: 0; display: flex; flex-direction: column;
+  position: absolute; top:0;right:0;bottom:0;left:0; display: flex; flex-direction: column;
   justify-content: flex-end; padding: 32px;
   background: linear-gradient(to top, rgba(27,36,50,0.9) 0%, transparent 60%);
 }
@@ -745,10 +749,58 @@ section { padding: 100px 24px; }
 .reveal-delay-5 { transition-delay: 0.40s; }
 .reveal-delay-6 { transition-delay: 0.48s; }
 
+/* ── Screen-reader only — visually hidden but announced ── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* ── Skip link — hidden until focused ── */
+.skip-link {
+  position: absolute; left: -9999px; top: auto;
+  width: 1px; height: 1px; overflow: hidden; z-index: 999;
+}
+.skip-link:focus {
+  position: fixed; top: 0; left: 0; width: auto; height: auto;
+  padding: 1rem 1.5rem; background: #333; color: #fff;
+  font-size: 1rem; font-weight: 700; z-index: 9999;
+  text-decoration: none;
+}
+
+/* ── Honeypot ── */
+.form-hp { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
 /* ── Focus ── */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-  outline: 2px solid var(--red); outline-offset: 2px;
+  outline: 3px solid var(--red); outline-offset: 2px;
 }
+
+/* ── Touch Target Minimum ── */
+.nav-menu a, .footer-col a, .back-to-top, .area-town { min-height: 44px; display: inline-flex; align-items: center; }
+.faq-trigger { min-height: 44px; }
+
+/* ── Skeleton Loader ── */
+.skeleton-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 10000;
+  background: var(--dark); display: flex; flex-direction: column;
+  transition: opacity 0.4s ease;
+}
+.skeleton-overlay.fade-out { opacity: 0; pointer-events: none; }
+.skeleton-nav { height: 72px; background: rgba(255,255,255,0.04); }
+.skeleton-hero { flex: 1; display: flex; align-items: center; padding: 80px 48px; }
+.skeleton-hero-inner { max-width: 680px; width: 100%; }
+.skeleton-bar {
+  height: 20px; border-radius: 8px; margin-bottom: 16px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+.skeleton-bar.lg { height: 48px; width: 80%; margin-bottom: 20px; }
+.skeleton-bar.md { height: 16px; width: 60%; }
+.skeleton-bar.sm { height: 14px; width: 40%; }
+.skeleton-bar.btn-skel { height: 48px; width: 160px; border-radius: 10px; margin-top: 24px; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
@@ -757,19 +809,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hero-badge-dot { animation: none; }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 </head>
 <body>
 
+<!-- Skeleton Loader -->
+<div class="skeleton-overlay" id="skeleton-loader" aria-hidden="true">
+  <div class="skeleton-nav"></div>
+  <div class="skeleton-hero">
+    <div class="skeleton-hero-inner">
+      <div class="skeleton-bar sm"></div>
+      <div class="skeleton-bar lg"></div>
+      <div class="skeleton-bar md"></div>
+      <div class="skeleton-bar md"></div>
+      <div class="skeleton-bar btn-skel"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- Scroll Progress -->
-<div class="scroll-progress" id="scroll-progress"></div>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
 <!-- Nav -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Main navigation">
   <a href="#home" class="nav-brand">
-    <div class="nav-brand-icon">DS</div>
+    <div class="nav-brand-icon"><img src="assets/images/dennys-logo.png" alt="Denny's Sanitation logo"></div>
     <div class="nav-brand-text">Denny's Sanitation<small>Rock Rapids, Iowa</small></div>
   </a>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-menu" id="nav-menu">
@@ -784,7 +854,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </nav>
 
 <!-- Announcement -->
-<div class="announcement" id="announcement-bar"></div>
+<div class="announcement" id="announcement-bar" role="alert" aria-live="polite"></div>
+
+<!-- Main Content -->
+<main id="main-content">
 
 <!-- Hero -->
 <section id="home" class="hero">
@@ -793,14 +866,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
   <div class="hero-content">
     <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
+      <div class="hero-badge-dot" aria-hidden="true"></div>
       <span id="hero-badge-text">Serving Lyon County since 1984</span>
     </div>
     <h1 id="hero-title">Your neighbors in <em>waste management</em></h1>
     <p class="hero-desc" id="hero-desc">Family owned garbage, recycling, and sanitation services for Rock Rapids and communities across northwest Iowa. Over 40 years of reliable, small-town service.</p>
     <div class="hero-actions">
       <a href="tel:+17124722293" class="btn btn-primary">
-        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>
         Call Us
       </a>
       <a href="#services" class="btn btn-secondary">View Services</a>
@@ -826,7 +899,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <div id="notices-section" class="notices">
   <div class="notices-wrap">
     <div class="notices-title">
-      <span class="notices-alert-icon"><svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></span>
+      <span class="notices-alert-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></span>
       <span>Route Notices</span>
     </div>
     <div id="notices-list"></div>
@@ -845,7 +918,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
       <div class="s-card reveal reveal-delay-1">
         <div class="s-card-img"><img src="assets/images/residential-truck.png" alt="Denny's Sanitation garbage truck" loading="lazy"></div>
-        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="s-card-header" role="button" tabindex="0" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <div class="s-card-header-left"><div class="s-card-tag">Residential</div><h3>Weekly Curbside Pickup</h3></div>
           <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
@@ -859,7 +932,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
       <div class="s-card reveal reveal-delay-2">
         <div class="s-card-img"><img src="assets/images/dumpster-brown.jpg" alt="Commercial dumpster with Denny's Sanitation logo" loading="lazy"></div>
-        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="s-card-header" role="button" tabindex="0" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <div class="s-card-header-left"><div class="s-card-tag">Commercial</div><h3>Business & Farm</h3></div>
           <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
@@ -870,7 +943,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
       <div class="s-card reveal reveal-delay-3">
         <div class="s-card-img"><img src="assets/images/recycle-symbol.jpg" alt="Recycling symbol" loading="lazy"></div>
-        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="s-card-header" role="button" tabindex="0" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <div class="s-card-header-left"><div class="s-card-tag">Recycling</div><h3>Curbside Recycling</h3></div>
           <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
@@ -887,7 +960,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
       <div class="s-card reveal reveal-delay-1">
         <div class="s-card-img"><img src="assets/images/can-redemption.jpg" alt="Cans and bottles for redemption" loading="lazy"></div>
-        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="s-card-header" role="button" tabindex="0" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <div class="s-card-header-left"><div class="s-card-tag">Redemption</div><h3>Can Redemption</h3></div>
           <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
@@ -905,7 +978,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
       <div class="s-card reveal reveal-delay-2">
         <div class="s-card-img"><img src="assets/images/portable-toilet.png" alt="Denny's Sanitation portable toilet" loading="lazy"></div>
-        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="s-card-header" role="button" tabindex="0" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <div class="s-card-header-left"><div class="s-card-tag">Rentals</div><h3>Portable Toilets</h3></div>
           <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
@@ -916,7 +989,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
       <div class="s-card reveal reveal-delay-3">
         <div class="s-card-img"><img src="assets/images/rolloff-delivery.jpg" alt="Roll-off dumpster delivery" loading="lazy"></div>
-        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="s-card-header" role="button" tabindex="0" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <div class="s-card-header-left"><div class="s-card-tag">Heavy Duty</div><h3>Dumpsters & Roll-Offs</h3></div>
           <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
@@ -1005,7 +1078,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           <tr><td>Saturday</td><td>Closed</td></tr>
           <tr><td>Sunday</td><td>Closed</td></tr>
         </table>
-        <div class="hours-override" id="hours-override"></div>
+        <div class="hours-override" id="hours-override" role="alert" aria-live="polite"></div>
       </div>
       <div class="hours-side">
         <div class="hours-info-card reveal reveal-delay-1">
@@ -1152,7 +1225,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <h2 id="cta-heading">Need to schedule a pickup?</h2>
     <p id="cta-desc">Give us a call or send us a message. We're here to help with anything waste-related.</p>
     <a href="tel:+17124722293" class="btn btn-primary" style="font-size:16px; padding:15px 32px;">
-      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z"/></svg>
       Call (712) 472-2293
     </a>
   </div>
@@ -1191,20 +1264,27 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="contact-form-wrap reveal reveal-delay-1">
         <h3 id="contact-form-title">Send us a message</h3>
         <form id="contact-form">
-          <div class="form-row">
-            <div class="form-group"><label for="c-name">Name *</label><input type="text" id="c-name" name="name" required></div>
-            <div class="form-group"><label for="c-phone">Phone</label><input type="tel" id="c-phone" name="phone"></div>
+          <!-- Honeypot — invisible to real users -->
+          <div class="form-hp" aria-hidden="true">
+            <label for="c-website">Website</label>
+            <input type="text" id="c-website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <div class="form-group"><label for="c-email">Email *</label><input type="email" id="c-email" name="email" required></div>
+          <div class="form-row">
+            <div class="form-group"><label for="c-name">Name *</label><input type="text" id="c-name" name="name" required autocomplete="name"></div>
+            <div class="form-group"><label for="c-phone">Phone</label><input type="tel" id="c-phone" name="phone" autocomplete="tel"></div>
+          </div>
+          <div class="form-group"><label for="c-email">Email *</label><input type="email" id="c-email" name="email" required autocomplete="email"></div>
           <div class="form-group"><label for="c-subject">Subject</label><input type="text" id="c-subject" name="subject" placeholder="e.g. New service request, billing question"></div>
           <div class="form-group"><label for="c-msg">Message *</label><textarea id="c-msg" name="message" placeholder="How can we help?" required></textarea></div>
-          <div class="form-feedback" id="contact-msg"></div>
+          <div class="form-feedback" id="contact-msg" role="alert" aria-live="polite"></div>
           <button type="submit" class="form-submit-btn" id="contact-btn">Send Message</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- Footer -->
 <footer class="footer">
@@ -1237,9 +1317,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; <span id="footer-year"></span> Denny's Sanitation &middot; Rock Rapids, Iowa</p>
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Denny's Sanitation. All rights reserved.</p>
     <a href="#home" class="back-to-top">
-      <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
       Back to top
     </a>
   </div>
@@ -1267,7 +1347,17 @@ let db;
 try { const app = initializeApp(firebaseConfig); db = getFirestore(app); } catch(e) { console.warn('Firebase not configured — running in static mode.'); }
 
 // ── Footer Year ──
-document.getElementById('footer-year').textContent = new Date().getFullYear();
+var footerYearEl = document.getElementById('footer-year');
+if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
+
+// ── Skeleton Loader ──
+document.addEventListener('DOMContentLoaded', () => {
+  const skeleton = document.getElementById('skeleton-loader');
+  if (skeleton) {
+    skeleton.classList.add('fade-out');
+    skeleton.addEventListener('transitionend', () => skeleton.remove(), { once: true });
+  }
+});
 
 // ── Scroll Progress Bar ──
 const progressBar = document.getElementById('scroll-progress');
@@ -1288,13 +1378,24 @@ window.addEventListener('scroll', () => {
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 navToggle.addEventListener('click', () => {
-  navToggle.classList.toggle('open');
+  const isOpen = navToggle.classList.toggle('open');
   navMenu.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
 });
 navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   navToggle.classList.remove('open');
   navMenu.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
 }));
+// Close mobile nav with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+    navToggle.classList.remove('open');
+    navMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.focus();
+  }
+});
 
 // ── Mobile Call Button ──
 const mobileCall = document.getElementById('mobile-call');
@@ -1519,7 +1620,7 @@ async function loadServices() {
       const detailHtml = s.details ? `<div class="s-card-detail">${s.details}</div>` : '';
       return `<div class="s-card reveal reveal-delay-${delay}" data-service-tag="${esc(s.tag || '')}">
         ${imgHtml}
-        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="s-card-header" role="button" tabindex="0" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'))" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <div class="s-card-header-left"><div class="s-card-tag">${esc(s.tag || '')}</div><h3>${esc(s.name)}</h3></div>
           <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
@@ -1624,15 +1725,44 @@ async function loadSiteImages() {
   } catch(e) { console.warn('Could not load site images:', e); }
 }
 
-// ── Contact Form ──
+// ── Contact Form (EmailJS) ──
+let emailjsReady = false;
+async function initEmailJS() {
+  try {
+    const snap = await getDoc(doc(db, 'config', 'emailjs'));
+    if (snap.exists()) {
+      const cfg = snap.data();
+      if (cfg.publicKey && cfg.serviceId && cfg.templateId && typeof emailjs !== 'undefined') {
+        emailjs.init(cfg.publicKey);
+        window._ejs = { serviceId: cfg.serviceId, templateId: cfg.templateId };
+        emailjsReady = true;
+      }
+    }
+  } catch(e) { console.warn('EmailJS config not loaded:', e); }
+}
+initEmailJS();
+
+let lastSubmitTime = 0;
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
+  // Honeypot check — silently reject if filled
+  const hp = document.getElementById('c-website');
+  if (hp && hp.value) { return; }
+  // Submission cooldown — 10 seconds between submits
+  const now = Date.now();
+  if (now - lastSubmitTime < 10000) {
+    const msg2 = document.getElementById('contact-msg');
+    msg2.className = 'form-feedback error';
+    msg2.textContent = 'Please wait a few seconds before submitting again.';
+    return;
+  }
+  lastSubmitTime = now;
   const btn = document.getElementById('contact-btn');
   const msg = document.getElementById('contact-msg');
   btn.disabled = true; btn.textContent = 'Sending...'; msg.className = 'form-feedback';
-  if (typeof emailjs !== 'undefined' && emailjs._userID) {
+  if (emailjsReady) {
     try {
-      await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this);
+      await emailjs.sendForm(window._ejs.serviceId, window._ejs.templateId, this);
       msg.className = 'form-feedback success';
       msg.textContent = "Message sent! We'll get back to you soon.";
       this.reset();

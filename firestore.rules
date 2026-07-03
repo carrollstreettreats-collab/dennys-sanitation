@@ -2,40 +2,48 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Route notices — anyone can read, only authenticated users can write
+    // Helper: only allow the site owner (admin) to write
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email in [
+          'dennysanitation@gmail.com'
+        ];
+    }
+
+    // Route notices — anyone can read, only admin can write
     match /notices/{noticeId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
-    // Services — anyone can read, only authenticated users can write
+    // Services — anyone can read, only admin can write
     match /services/{serviceId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
-    // FAQs — anyone can read, only authenticated users can write
+    // FAQs — anyone can read, only admin can write
     match /faqs/{faqId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
-    // Policies — anyone can read, only authenticated users can write
+    // Policies — anyone can read, only admin can write
     match /policies/{policyId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
-    // Site images — anyone can read, only authenticated users can write
+    // Site images — anyone can read, only admin can write
     match /siteImages/{imageId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
-    // Site config — anyone can read, only authenticated users can write
+    // Site config — anyone can read, only admin can write
     match /config/{docId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
   }
 }
