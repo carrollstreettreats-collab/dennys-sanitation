@@ -314,7 +314,6 @@ section { padding: 100px 24px; }
 .services-bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
   gap: 16px;
 }
 .s-card {
@@ -324,12 +323,11 @@ section { padding: 100px 24px; }
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 .s-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
-.s-card-featured { grid-column: span 2; }
+/* Cards with images keep their image visible */
 .s-card-img {
-  width: 100%; aspect-ratio: 2.2/1; overflow: hidden;
+  width: 100%; aspect-ratio: 16/9; overflow: hidden;
   position: relative;
 }
-.s-card-featured .s-card-img { aspect-ratio: 2.5/1; }
 .s-card-img img {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.5s var(--ease);
@@ -340,16 +338,37 @@ section { padding: 100px 24px; }
   background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
   pointer-events: none;
 }
-.s-card-body { padding: 24px; }
+/* Compact header — always visible */
+.s-card-header {
+  padding: 20px 24px; display: flex; align-items: center;
+  justify-content: space-between; cursor: pointer; gap: 12px;
+}
+.s-card-header-left { display: flex; align-items: center; gap: 12px; }
 .s-card-tag {
   display: inline-block; font-family: var(--font-head); font-size: 11px; font-weight: 600;
   color: var(--red); background: var(--red-soft); padding: 4px 10px;
-  border-radius: 6px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px;
+  border-radius: 6px; letter-spacing: 0.5px; text-transform: uppercase; flex-shrink: 0;
 }
 .s-card h3 {
-  font-family: var(--font-head); font-weight: 700; font-size: 20px;
-  color: var(--dark); margin-bottom: 8px; letter-spacing: -0.3px;
+  font-family: var(--font-head); font-weight: 700; font-size: 17px;
+  color: var(--dark); letter-spacing: -0.3px; margin: 0;
 }
+.s-card-toggle {
+  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+  background: var(--light); display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.35s var(--ease);
+}
+.s-card-toggle svg { width: 14px; height: 14px; fill: var(--charcoal); }
+.s-card.open .s-card-toggle { background: var(--red); transform: rotate(180deg); }
+.s-card.open .s-card-toggle svg { fill: var(--white); }
+/* Expandable body */
+.s-card-body {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s var(--ease);
+}
+.s-card.open .s-card-body { grid-template-rows: 1fr; }
+.s-card-body-inner { overflow: hidden; }
+.s-card-content { padding: 0 24px 24px; }
 .s-card p { font-size: 14px; color: var(--slate); line-height: 1.65; }
 .s-card-detail {
   margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--light);
@@ -359,11 +378,9 @@ section { padding: 100px 24px; }
 
 @media (max-width: 860px) {
   .services-bento { grid-template-columns: 1fr 1fr; }
-  .s-card-featured { grid-column: span 2; }
 }
 @media (max-width: 580px) {
   .services-bento { grid-template-columns: 1fr; }
-  .s-card-featured { grid-column: span 1; }
 }
 
 /* ── Service Area ── */
@@ -775,17 +792,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       </a>
       <a href="#services" class="btn btn-secondary">View Services</a>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats" id="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num" data-count="40">0</div>
+        <div class="hero-stat-num" data-count="40" data-hero>0</div>
         <div class="hero-stat-label">Years in Business</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num" data-count="9">0</div>
+        <div class="hero-stat-num" data-count="9" data-hero>0</div>
         <div class="hero-stat-label">Communities</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num" data-count="6">0</div>
+        <div class="hero-stat-num" data-count="6" data-hero>0</div>
         <div class="hero-stat-label">Services Offered</div>
       </div>
     </div>
@@ -813,31 +830,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </div>
     <div class="services-bento">
 
-      <div class="s-card s-card-featured reveal reveal-delay-1">
+      <div class="s-card reveal reveal-delay-1">
         <div class="s-card-img"><img src="assets/images/hero-fleet.jpg" alt="Denny's Sanitation fleet" loading="lazy"></div>
-        <div class="s-card-body">
-          <div class="s-card-tag">Residential</div>
-          <h3>Weekly Curbside Pickup</h3>
+        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="s-card-header-left"><div class="s-card-tag">Residential</div><h3>Weekly Curbside Pickup</h3></div>
+          <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
+        </div>
+        <div class="s-card-body"><div class="s-card-body-inner"><div class="s-card-content">
           <p>Dependable garbage collection for homes throughout Lyon County. Rain or shine, we're at your curb every week. Just have your cart out by 7 AM.</p>
           <div class="s-card-detail">
             <strong>Schedule:</strong> Mon — Rock Rapids &bull; Tue — George &bull; Wed — Lester & Alvord &bull; Fri — Doon & Larchwood
           </div>
-        </div>
+        </div></div></div>
       </div>
 
       <div class="s-card reveal reveal-delay-2">
         <div class="s-card-img"><img src="assets/images/dumpster-brown.jpg" alt="Commercial dumpster with Denny's Sanitation logo" loading="lazy"></div>
-        <div class="s-card-body">
-          <div class="s-card-tag">Commercial</div>
-          <h3>Business & Farm</h3>
-          <p>Dumpster pickup service for farm and commercial customers throughout the area. We provide the container, schedule regular pickups, and handle maintenance and servicing.</p>
+        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="s-card-header-left"><div class="s-card-tag">Commercial</div><h3>Business & Farm</h3></div>
+          <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
+        <div class="s-card-body"><div class="s-card-body-inner"><div class="s-card-content">
+          <p>Dumpster pickup service for farm and commercial customers throughout the area. We provide the container, schedule regular pickups, and handle maintenance and servicing.</p>
+        </div></div></div>
       </div>
 
       <div class="s-card reveal reveal-delay-3">
-        <div class="s-card-body">
-          <div class="s-card-tag">Recycling</div>
-          <h3>Curbside Recycling</h3>
+        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="s-card-header-left"><div class="s-card-tag">Recycling</div><h3>Curbside Recycling</h3></div>
+          <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
+        </div>
+        <div class="s-card-body"><div class="s-card-body-inner"><div class="s-card-content">
           <p>Twice-monthly recycling collection. We do our part to keep landfills from filling up too quickly.</p>
           <div class="s-card-detail">
             <strong>Schedule:</strong><br>
@@ -845,36 +868,43 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             2nd & 4th Thu — George<br>
             Every other Mon — Lester, Doon & Alvord
           </div>
-        </div>
+        </div></div></div>
       </div>
 
       <div class="s-card reveal reveal-delay-1">
-        <div class="s-card-body">
-          <div class="s-card-tag">Redemption</div>
-          <h3>Can Redemption</h3>
-          <p>Bring in your Iowa-deposit cans and bottles for your $0.05 per container refund. We accept 7-Up, Coke, Pepsi, Sam's, Shasta, Clover Valley, Old Milwaukee, Miller, Budweiser, Casey's, Best Choice, Best Yet, Shurfine, Our Family, Fastco, and American Fare.</p>
-          <div class="s-card-detail">
-            <strong>Hours:</strong> Mon–Thu 12–5 PM (Closed Fri &amp; Sat)<br>
-            <strong>Not accepted:</strong> Gatorade, Powerade, Arnold Palmer, Arizona Tea, Black Rifle Coffee, Body Armor, Brisk, Dole, Folgers 1850, Jumex, Lipton, Nestea, Prime, Propel, Pure Leaf, V8, water bottles, milk jugs, fruit/vegetable tins, nutritional supplements.<br>
-            <strong>Rules:</strong> Items must be clean, empty, and free from garbage. Do not crush or destroy. Bag cans in clear bags, box glass separately, and label all bags with your name and phone number.<br>
-            <strong>Note:</strong> If you have an overdue garbage account, your redemption money will be credited to your account and not paid out in cash.
-          </div>
+        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="s-card-header-left"><div class="s-card-tag">Redemption</div><h3>Can Redemption</h3></div>
+          <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
+        <div class="s-card-body"><div class="s-card-body-inner"><div class="s-card-content">
+          <p>Bring in your Iowa-deposit cans and bottles for your $0.05 per container refund.</p>
+          <div class="s-card-detail">
+            <strong>Hours:</strong> Mon–Thu 12–5 PM (Closed Fri &amp; Sat)<br><br>
+            <strong>Accepted brands:</strong> 7-Up, Coke, Pepsi, Sam's, Shasta, Clover Valley, Old Milwaukee, Miller, Budweiser, Casey's, Best Choice, Best Yet, Shurfine, Our Family, Fastco, American Fare.<br><br>
+            <strong>Not accepted:</strong> Arnold Palmer Half/Half Tea, Arizona Tea, Bae, Black Rifle Coffee, Body Armor, Brisk, De Mi Pais (DMP), Dole, Fareway, Folgers 1850, fruit &amp; vegetable tin cans/bottles, Gatorade, Jumex, Krogers, Lipton Iced Tea, milk jugs, Nestea, nutritional supplements, Powerade, Prime Plastic, Propel, Pure Leaf Tea, water bottles, V8.<br><br>
+            <strong>Rules:</strong> Items must be CLEAN, EMPTY, and FREE FROM GARBAGE. Items cannot be crushed or destroyed. Cans must be in clear bags. Glass must be boxed separately. Label all bags with your name and phone number.<br><br>
+            <strong>Important:</strong> If you have an overdue garbage account, your redemption money will be credited to your account and not paid out in cash.
+          </div>
+        </div></div></div>
       </div>
 
       <div class="s-card reveal reveal-delay-2">
-        <div class="s-card-body">
-          <div class="s-card-tag">Rentals</div>
-          <h3>Portable Toilets</h3>
-          <p>Portable toilet rental and servicing within a 40-mile radius of Rock Rapids. Perfect for special events, street dances, celebrations, temporary work sites, and construction sites. Optional weekly servicing available for extended projects.</p>
+        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="s-card-header-left"><div class="s-card-tag">Rentals</div><h3>Portable Toilets</h3></div>
+          <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
         </div>
+        <div class="s-card-body"><div class="s-card-body-inner"><div class="s-card-content">
+          <p>Portable toilet rental and servicing within a 40-mile radius of Rock Rapids. Perfect for special events, street dances, celebrations, temporary work sites, and construction sites. Optional weekly servicing available for extended projects.</p>
+        </div></div></div>
       </div>
 
       <div class="s-card reveal reveal-delay-3">
         <div class="s-card-img"><img src="assets/images/rolloff-delivery.jpg" alt="Roll-off dumpster delivery" loading="lazy"></div>
-        <div class="s-card-body">
-          <div class="s-card-tag">Heavy Duty</div>
-          <h3>Dumpsters & Roll-Offs</h3>
+        <div class="s-card-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="s-card-header-left"><div class="s-card-tag">Heavy Duty</div><h3>Dumpsters & Roll-Offs</h3></div>
+          <div class="s-card-toggle"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
+        </div>
+        <div class="s-card-body"><div class="s-card-body-inner"><div class="s-card-content">
           <p>Dumpster and roll-off container rentals for construction, renovation, and cleanout projects. 20-yard and 30-yard roll-offs available for larger jobs.</p>
           <div class="s-card-detail">
             <strong>Available Sizes:</strong><br>
@@ -884,7 +914,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             20 yd — 8' wide &times; 19' long &times; 4' tall<br>
             30 yd — 8' wide &times; 22' long &times; 5' tall
           </div>
-        </div>
+        </div></div></div>
       </div>
 
     </div>
@@ -1040,7 +1070,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           What items are accepted for can redemption?
           <span class="faq-icon"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner"><p class="faq-answer-text">We accept Iowa-deposit cans, bottles, and 2-liter bottles from brands including 7-Up, Coke, Pepsi, Sam's, Shasta, Clover Valley, Old Milwaukee, Miller, Budweiser, Casey's, Best Choice, Best Yet, Shurfine, Our Family, Fastco, and American Fare. We do not accept Arnold Palmer, Arizona Tea, Black Rifle Coffee, Body Armor, Brisk, Dole, Folgers 1850, Gatorade, Jumex, Lipton, Nestea, Powerade, Prime, Propel, Pure Leaf Tea, V8, water bottles, milk jugs, nutritional supplements, or fruit/vegetable tins. Items must be clean, empty, free from garbage, and not crushed or destroyed. Bag cans in clear bags, box glass separately, and label all bags with your name and phone number.</p></div></div>
+        <div class="faq-answer"><div class="faq-answer-inner"><p class="faq-answer-text">We accept Iowa-deposit cans, bottles, and 2-liter bottles from brands including 7-Up, Coke, Pepsi, Sam's, Shasta, Clover Valley, Old Milwaukee, Miller, Budweiser, Casey's, Best Choice, Best Yet, Shurfine, Our Family, Fastco, and American Fare. We do not accept Arnold Palmer Half/Half Tea, Arizona Tea, Bae, Black Rifle Coffee, Body Armor, Brisk, De Mi Pais (DMP), Dole, Fareway, Folgers 1850, Gatorade, Jumex, Krogers, Lipton Iced Tea, Nestea, Powerade, Prime Plastic, Propel, Pure Leaf Tea, V8, water bottles, milk jugs, nutritional supplements, or fruit/vegetable tin cans. Items must be clean, empty, free from garbage, and not crushed or destroyed. Cans must be in clear bags. Glass must be boxed separately. Label all bags with your name and phone number.</p></div></div>
       </div>
 
       <div class="faq-item reveal">
@@ -1251,25 +1281,29 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ── Counter Animation ──
-function animateCounters() {
-  document.querySelectorAll('[data-count]').forEach(el => {
-    if (el.dataset.animated) return;
-    const target = parseInt(el.dataset.count);
-    const suffix = el.dataset.count.includes('+') ? '+' : '';
-    const duration = 1800;
-    const start = performance.now();
+function animateCounter(el) {
+  if (el.dataset.animated) return;
+  const target = parseInt(el.dataset.count);
+  const duration = 1800;
+  const start = performance.now();
 
-    function tick(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      el.textContent = Math.round(target * eased) + (progress >= 1 ? '+' : '');
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    el.dataset.animated = '1';
-    requestAnimationFrame(tick);
-  });
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 4);
+    el.textContent = Math.round(target * eased) + (progress >= 1 ? '+' : '');
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  el.dataset.animated = '1';
+  requestAnimationFrame(tick);
 }
+
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => animateCounter(el));
+}
+
+// Fire hero counters immediately on page load
+document.querySelectorAll('[data-hero][data-count]').forEach(el => animateCounter(el));
 
 // ── Scroll Reveal ──
 const revealObserver = new IntersectionObserver((entries) => {
