@@ -53,13 +53,13 @@ header{background:var(--red);padding:0 2rem;height:56px;display:flex;align-items
 .sign-out-btn:hover{color:var(--white);border-color:rgba(255,255,255,0.6)}
 
 /* ── TABS ── */
-.tabs{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;gap:0}
-.tab-btn{padding:1rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;background:none;border:none;border-bottom:3px solid transparent;color:var(--text-light);cursor:pointer;transition:color 0.2s,border-color 0.2s}
+.tabs{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab-btn{padding:1rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;background:none;border:none;border-bottom:3px solid transparent;color:var(--text-light);cursor:pointer;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
 .tab-btn:hover{color:var(--text)}
 .tab-btn.active{color:var(--red);border-bottom-color:var(--red)}
 
 /* ── MAIN ── */
-main{flex:1;padding:2rem;max-width:900px;width:100%;margin:0 auto}
+main{flex:1;padding:2rem;max-width:960px;width:100%;margin:0 auto}
 
 /* ── SECTION HEADERS ── */
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
@@ -88,14 +88,14 @@ main{flex:1;padding:2rem;max-width:900px;width:100%;margin:0 auto}
 /* ── MODAL ── */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{display:flex}
-.modal{background:var(--white);border-radius:8px;padding:2rem;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;position:relative}
+.modal{background:var(--white);border-radius:8px;padding:2rem;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;position:relative}
 .modal-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.4rem;text-transform:uppercase;color:var(--text);margin-bottom:1.5rem}
 .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.3rem;color:var(--text-light);cursor:pointer;line-height:1}
 .modal-close:hover{color:var(--text)}
 .modal-form{display:flex;flex-direction:column;gap:0.9rem}
 .modal-form label{font-family:'Barlow Condensed',sans-serif;font-size:0.73rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:0.3rem}
-.modal-form input,.modal-form textarea{width:100%;padding:0.65rem 0.85rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Barlow',sans-serif;font-size:0.9rem;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s}
-.modal-form input:focus,.modal-form textarea:focus{border-color:var(--red)}
+.modal-form input,.modal-form textarea,.modal-form select{width:100%;padding:0.65rem 0.85rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Barlow',sans-serif;font-size:0.9rem;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s}
+.modal-form input:focus,.modal-form textarea:focus,.modal-form select:focus{border-color:var(--red)}
 .modal-form textarea{min-height:90px;resize:vertical}
 .modal-footer{display:flex;gap:0.75rem;justify-content:flex-end;margin-top:1.5rem;flex-wrap:wrap}
 .modal-save{background:var(--red);color:var(--white);border:none;border-radius:4px;padding:0.7rem 1.6rem;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
@@ -104,17 +104,16 @@ main{flex:1;padding:2rem;max-width:900px;width:100%;margin:0 auto}
 .modal-cancel{background:var(--white);color:var(--text-mid);border:1.5px solid var(--border);border-radius:4px;padding:0.7rem 1.4rem;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s}
 .modal-cancel:hover{border-color:var(--red)}
 
-/* ── SETTINGS ── */
+/* ── SETTINGS CARD ── */
 .settings-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:1.75rem;margin-bottom:1.25rem}
 .settings-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;color:var(--text);margin-bottom:0.4rem}
 .settings-card p{font-size:0.85rem;color:var(--text-light);margin-bottom:1.25rem;line-height:1.6}
-.settings-card input,.settings-card textarea{width:100%;padding:0.65rem 0.85rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Barlow',sans-serif;font-size:0.9rem;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s}
+.settings-card input,.settings-card textarea{width:100%;padding:0.65rem 0.85rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Barlow',sans-serif;font-size:0.9rem;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s;margin-bottom:0.5rem}
 .settings-card input:focus,.settings-card textarea:focus{border-color:var(--red)}
 .settings-card textarea{min-height:80px;resize:vertical}
+.settings-card label{font-family:'Barlow Condensed',sans-serif;font-size:0.73rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:0.3rem;margin-top:0.75rem}
 .settings-save{margin-top:1rem;background:var(--red);color:var(--white);border:none;border-radius:4px;padding:0.65rem 1.4rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
 .settings-save:hover{background:var(--red-dark)}
-.settings-confirm{font-size:0.82rem;color:var(--success);margin-top:0.5rem;display:none}
-.settings-confirm.show{display:block}
 
 /* ── EMPTY STATE ── */
 .empty-state{text-align:center;padding:4rem 2rem;color:var(--text-light)}
@@ -130,16 +129,58 @@ main{flex:1;padding:2rem;max-width:900px;width:100%;margin:0 auto}
 #toast.success{background:#d4edda;color:#155724}
 #toast.error{background:#f8d7da;color:#721c24}
 
+/* ── HOURS TAB ── */
+.hours-grid{display:grid;gap:0.5rem}
+.hours-row{display:grid;grid-template-columns:100px 60px 1fr 30px 1fr;align-items:center;gap:0.5rem;padding:0.5rem 0;border-bottom:1px solid var(--border)}
+.hours-row:last-child{border-bottom:none}
+.hours-row label{font-weight:600;font-size:0.88rem}
+.hours-row input[type="time"]{padding:0.4rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Barlow',sans-serif;font-size:0.85rem}
+.hours-row input[type="time"]:focus{border-color:var(--red);outline:none}
+.toggle{position:relative;width:40px;height:22px;display:inline-block}
+.toggle input{opacity:0;width:0;height:0}
+.toggle .slider{position:absolute;inset:0;background:#ccc;border-radius:22px;cursor:pointer;transition:background 0.2s}
+.toggle .slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:var(--white);border-radius:50%;transition:transform 0.2s}
+.toggle input:checked+.slider{background:var(--red)}
+.toggle input:checked+.slider::before{transform:translateX(18px)}
+
+/* ── IMAGES TAB ── */
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem}
+.img-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.img-card .img-preview{width:100%;height:150px;object-fit:cover;display:block;background:var(--bg)}
+.img-card .img-body{padding:1rem}
+.img-card .img-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--text);margin-bottom:0.75rem}
+.img-card .img-actions{display:flex;gap:0.5rem;flex-wrap:wrap}
+.img-card .img-actions button{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:0.4rem 0.85rem;border-radius:4px;cursor:pointer;transition:all 0.2s}
+.btn-change{background:var(--red);color:var(--white);border:none}
+.btn-change:hover{background:var(--red-dark)}
+.btn-reset{background:var(--white);color:var(--danger);border:1px solid var(--danger-bg)}
+.btn-reset:hover{background:var(--danger-bg)}
+
+/* ── HEADINGS TAB ── */
+.headings-fieldset{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin-bottom:1.25rem}
+.headings-fieldset legend{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--red);padding:0 0.5rem}
+.headings-fieldset .field-group{margin-bottom:0.75rem}
+.headings-fieldset label{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:0.25rem}
+.headings-fieldset input,.headings-fieldset textarea{width:100%;padding:0.55rem 0.75rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Barlow',sans-serif;font-size:0.88rem;color:var(--text);outline:none;transition:border-color 0.2s}
+.headings-fieldset input:focus,.headings-fieldset textarea:focus{border-color:var(--red)}
+.headings-fieldset textarea{min-height:60px;resize:vertical}
+
+/* ── FILE INPUT HIDDEN ── */
+.file-input-hidden{position:absolute;width:0;height:0;opacity:0;overflow:hidden}
+
 /* ── MOBILE ── */
 @media(max-width:700px){
   header{padding:0 1rem}
   .header-user{display:none}
   main{padding:1rem}
-  .tabs{padding:0 0.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .tab-btn{padding:0.85rem 1rem;font-size:0.78rem;white-space:nowrap}
+  .tabs{padding:0 0.5rem}
+  .tab-btn{padding:0.85rem 0.75rem;font-size:0.75rem}
   .modal{padding:1.25rem}
   .section-header h2{font-size:1.3rem}
   .settings-card{padding:1.25rem}
+  .hours-row{grid-template-columns:80px 50px 1fr 20px 1fr;font-size:0.82rem}
+  .img-grid{grid-template-columns:1fr}
+  .hide-mobile{display:none}
 }
 </style>
 </head>
@@ -174,17 +215,23 @@ main{flex:1;padding:2rem;max-width:900px;width:100%;margin:0 auto}
   </header>
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="notices">Route Notices</button>
+    <button class="tab-btn active" data-tab="notices">Notices</button>
+    <button class="tab-btn" data-tab="services">Services</button>
+    <button class="tab-btn" data-tab="faq">FAQ</button>
+    <button class="tab-btn" data-tab="policies">Policies</button>
+    <button class="tab-btn" data-tab="hours">Hours</button>
+    <button class="tab-btn" data-tab="images">Images</button>
+    <button class="tab-btn" data-tab="headings">Headings</button>
     <button class="tab-btn" data-tab="settings">Settings</button>
   </div>
 
   <main>
 
-    <!-- ── NOTICES TAB ── -->
+    <!-- ══════ NOTICES TAB ══════ -->
     <div class="tab-panel active" id="tab-notices">
       <div class="section-header">
         <h2>Route Notices</h2>
-        <button class="add-btn" id="add-notice-btn">+ Add Notice</button>
+        <button class="add-btn" onclick="openNoticeModal()">+ Add Notice</button>
       </div>
       <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:1.5rem;line-height:1.6">Post pickup schedule changes, holiday notices, and announcements. Notices with an expiration date will automatically disappear after that date.</p>
       <table class="data-table" id="notices-table">
@@ -201,32 +248,191 @@ main{flex:1;padding:2rem;max-width:900px;width:100%;margin:0 auto}
       </table>
       <div class="empty-state" id="notices-empty" style="display:none">
         <p>No route notices posted.</p>
-        <p>Click <strong>+ Add Notice</strong> to post a holiday schedule change or announcement.</p>
+        <p>Click <strong>+ Add Notice</strong> to create one.</p>
       </div>
     </div>
 
-    <!-- ── SETTINGS TAB ── -->
+    <!-- ══════ SERVICES TAB ══════ -->
+    <div class="tab-panel" id="tab-services">
+      <div class="section-header">
+        <h2>Services</h2>
+        <button class="add-btn" onclick="openServiceModal()">+ Add Service</button>
+      </div>
+      <table class="data-table" id="services-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Tag</th>
+            <th>Name</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="services-tbody"></tbody>
+      </table>
+      <div class="empty-state" id="services-empty" style="display:none">
+        <p>No services yet.</p>
+      </div>
+    </div>
+
+    <!-- ══════ FAQ TAB ══════ -->
+    <div class="tab-panel" id="tab-faq">
+      <div class="section-header">
+        <h2>FAQ</h2>
+        <button class="add-btn" onclick="openFaqModal()">+ Add FAQ</button>
+      </div>
+      <table class="data-table" id="faq-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Question</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="faq-tbody"></tbody>
+      </table>
+      <div class="empty-state" id="faq-empty" style="display:none">
+        <p>No FAQ items yet.</p>
+      </div>
+    </div>
+
+    <!-- ══════ POLICIES TAB ══════ -->
+    <div class="tab-panel" id="tab-policies">
+      <div class="section-header">
+        <h2>Policies</h2>
+        <button class="add-btn" onclick="openPolicyModal()">+ Add Policy</button>
+      </div>
+      <table class="data-table" id="policies-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Title</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="policies-tbody"></tbody>
+      </table>
+      <div class="empty-state" id="policies-empty" style="display:none">
+        <p>No policies yet.</p>
+      </div>
+    </div>
+
+    <!-- ══════ HOURS TAB ══════ -->
+    <div class="tab-panel" id="tab-hours">
+      <div class="section-header">
+        <h2>Office Hours</h2>
+      </div>
+      <div class="settings-card">
+        <h3>Office Hours</h3>
+        <p>Set daily open/close times. Toggle off for days the office is closed.</p>
+        <div class="hours-grid" id="office-hours-grid"></div>
+      </div>
+      <div class="settings-card">
+        <h3>Can Redemption Hours</h3>
+        <p>Describe when can redemption is available. This is displayed as-is on the website.</p>
+        <textarea id="can-redemption-hours" placeholder="e.g. Mon-Thu 12-5 PM"></textarea>
+      </div>
+      <button class="settings-save" onclick="saveHours()" style="margin-top:0.5rem">Save Hours</button>
+    </div>
+
+    <!-- ══════ IMAGES TAB ══════ -->
+    <div class="tab-panel" id="tab-images">
+      <div class="section-header">
+        <h2>Site Images</h2>
+      </div>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:1.5rem;line-height:1.6">Replace images used on the public website. Images are resized to max 800px and stored as base64. Max file size after compression: 750KB.</p>
+      <div class="img-grid" id="images-grid"></div>
+      <input type="file" accept="image/*" class="file-input-hidden" id="img-file-input"/>
+    </div>
+
+    <!-- ══════ HEADINGS TAB ══════ -->
+    <div class="tab-panel" id="tab-headings">
+      <div class="section-header">
+        <h2>Site Headings &amp; Text</h2>
+      </div>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:1.5rem;line-height:1.6">Edit all text content on the public website. Changes take effect immediately after saving.</p>
+
+      <fieldset class="headings-fieldset"><legend>Hero</legend>
+        <div class="field-group"><label>heroTitle</label><input type="text" data-heading="heroTitle"/></div>
+        <div class="field-group"><label>heroBadge</label><input type="text" data-heading="heroBadge"/></div>
+        <div class="field-group"><label>heroDesc</label><textarea data-heading="heroDesc"></textarea></div>
+        <div class="field-group"><label>heroBtn1</label><input type="text" data-heading="heroBtn1"/></div>
+        <div class="field-group"><label>heroBtn2</label><input type="text" data-heading="heroBtn2"/></div>
+      </fieldset>
+
+      <fieldset class="headings-fieldset"><legend>Services</legend>
+        <div class="field-group"><label>servicesEyebrow</label><input type="text" data-heading="servicesEyebrow"/></div>
+        <div class="field-group"><label>servicesHeading</label><input type="text" data-heading="servicesHeading"/></div>
+        <div class="field-group"><label>servicesDesc</label><textarea data-heading="servicesDesc"></textarea></div>
+      </fieldset>
+
+      <fieldset class="headings-fieldset"><legend>Service Area</legend>
+        <div class="field-group"><label>areaEyebrow</label><input type="text" data-heading="areaEyebrow"/></div>
+        <div class="field-group"><label>areaHeading</label><input type="text" data-heading="areaHeading"/></div>
+      </fieldset>
+
+      <fieldset class="headings-fieldset"><legend>Hours</legend>
+        <div class="field-group"><label>hoursEyebrow</label><input type="text" data-heading="hoursEyebrow"/></div>
+        <div class="field-group"><label>hoursHeading</label><input type="text" data-heading="hoursHeading"/></div>
+      </fieldset>
+
+      <fieldset class="headings-fieldset"><legend>FAQ</legend>
+        <div class="field-group"><label>faqEyebrow</label><input type="text" data-heading="faqEyebrow"/></div>
+        <div class="field-group"><label>faqHeading</label><input type="text" data-heading="faqHeading"/></div>
+        <div class="field-group"><label>faqDesc</label><textarea data-heading="faqDesc"></textarea></div>
+      </fieldset>
+
+      <fieldset class="headings-fieldset"><legend>Policies</legend>
+        <div class="field-group"><label>policiesEyebrow</label><input type="text" data-heading="policiesEyebrow"/></div>
+        <div class="field-group"><label>policiesHeading</label><input type="text" data-heading="policiesHeading"/></div>
+        <div class="field-group"><label>policiesDesc</label><textarea data-heading="policiesDesc"></textarea></div>
+      </fieldset>
+
+      <fieldset class="headings-fieldset"><legend>CTA</legend>
+        <div class="field-group"><label>ctaHeading</label><input type="text" data-heading="ctaHeading"/></div>
+        <div class="field-group"><label>ctaDesc</label><textarea data-heading="ctaDesc"></textarea></div>
+      </fieldset>
+
+      <fieldset class="headings-fieldset"><legend>Contact</legend>
+        <div class="field-group"><label>contactEyebrow</label><input type="text" data-heading="contactEyebrow"/></div>
+        <div class="field-group"><label>contactHeading</label><input type="text" data-heading="contactHeading"/></div>
+        <div class="field-group"><label>contactFormTitle</label><input type="text" data-heading="contactFormTitle"/></div>
+      </fieldset>
+
+      <button class="settings-save" onclick="saveHeadings()" style="margin-top:0.5rem">Save All Headings</button>
+    </div>
+
+    <!-- ══════ SETTINGS TAB ══════ -->
     <div class="tab-panel" id="tab-settings">
       <div class="settings-card">
         <h3>Announcement Banner</h3>
-        <p>Show a message in a red bar at the top of the website — useful for closures, weather delays, or general announcements. Leave blank to hide.</p>
+        <p>Show a message in a red bar at the top of the website. Leave blank to hide.</p>
         <textarea id="setting-announcement" placeholder="e.g. Office closed July 4th — all Friday routes will run Thursday July 3rd."></textarea>
-        <button class="settings-save" id="save-announcement">Save</button>
-        <p class="settings-confirm" id="announcement-confirm">Saved!</p>
+        <button class="settings-save" onclick="saveAnnouncement()">Save</button>
       </div>
 
       <div class="settings-card">
         <h3>Hours Override</h3>
-        <p>Temporarily display a special hours message on the website (e.g., holiday closures). This appears as a red notice below the regular hours table. Leave blank to hide.</p>
+        <p>Temporarily display a special hours message (e.g., holiday closures). Leave blank to hide.</p>
         <textarea id="setting-hours-override" placeholder="e.g. Our office will be closed Dec 24–25 for the Christmas holiday."></textarea>
-        <button class="settings-save" id="save-hours-override">Save</button>
-        <p class="settings-confirm" id="hours-override-confirm">Saved!</p>
+        <button class="settings-save" onclick="saveHoursOverride()">Save</button>
+      </div>
+
+      <div class="settings-card">
+        <h3>Contact Information</h3>
+        <p>Update the phone number, email, and address shown on the website.</p>
+        <label>Phone</label>
+        <input type="text" id="setting-phone" placeholder="(712) 555-1234"/>
+        <label>Email</label>
+        <input type="email" id="setting-email" placeholder="info@dennyssanitation.com"/>
+        <label>Address</label>
+        <input type="text" id="setting-address" placeholder="123 Main St, Rock Rapids, IA 51246"/>
+        <button class="settings-save" onclick="saveContact()">Save Contact Info</button>
       </div>
 
       <div class="settings-card">
         <h3>Backup &amp; Export</h3>
-        <p>Download a full backup of all route notices and settings as a JSON file.</p>
-        <button class="settings-save" id="export-btn">Download Backup</button>
+        <p>Download a full backup of all data as a JSON file.</p>
+        <button class="settings-save" onclick="exportBackup()">Download Backup</button>
       </div>
     </div>
 
@@ -234,29 +440,83 @@ main{flex:1;padding:2rem;max-width:900px;width:100%;margin:0 auto}
 </div>
 
 <!-- ── NOTICE MODAL ── -->
-<div class="modal-overlay" id="notice-modal">
+<div class="modal-overlay" id="notice-modal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
-    <button class="modal-close" id="notice-modal-close">&times;</button>
+    <button class="modal-close" onclick="document.getElementById('notice-modal').classList.remove('open')">&times;</button>
     <h2 class="modal-title" id="notice-modal-title">Add Notice</h2>
     <div class="modal-form">
       <input type="hidden" id="notice-id"/>
+      <div><label>Title *</label><input type="text" id="notice-title" placeholder="e.g. 4th of July Schedule Change"/></div>
+      <div><label>Body *</label><textarea id="notice-body" placeholder="e.g. Wednesday routes will run Thursday."></textarea></div>
       <div>
-        <label for="notice-title">Title *</label>
-        <input type="text" id="notice-title" placeholder="e.g. 4th of July Schedule Change" required/>
-      </div>
-      <div>
-        <label for="notice-body">Body *</label>
-        <textarea id="notice-body" placeholder="e.g. Wednesday July 2 — Larchwood recycling. Thursday July 3 — Larchwood garbage." required></textarea>
-      </div>
-      <div>
-        <label for="notice-expires">Expires On (optional)</label>
+        <label>Expires On (optional)</label>
         <input type="date" id="notice-expires"/>
-        <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.3rem">Leave blank to show indefinitely. Notice will automatically hide after this date.</p>
+        <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.3rem">Leave blank to show indefinitely.</p>
       </div>
     </div>
     <div class="modal-footer">
-      <button class="modal-cancel" id="notice-modal-cancel">Cancel</button>
+      <button class="modal-cancel" onclick="document.getElementById('notice-modal').classList.remove('open')">Cancel</button>
       <button class="modal-save" id="notice-modal-save">Save Notice</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVICE MODAL ── -->
+<div class="modal-overlay" id="service-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('service-modal').classList.remove('open')">&times;</button>
+    <h2 class="modal-title" id="service-modal-title">Add Service</h2>
+    <div class="modal-form">
+      <input type="hidden" id="service-id"/>
+      <div><label>Tag</label><input type="text" id="service-tag" placeholder="e.g. Residential"/></div>
+      <div><label>Name *</label><input type="text" id="service-name" placeholder="e.g. Weekly Garbage Pickup"/></div>
+      <div><label>Description</label><input type="text" id="service-desc" placeholder="Short description"/></div>
+      <div><label>Details</label><textarea id="service-details" placeholder="Detailed info (multi-line)"></textarea></div>
+      <div>
+        <label>Image</label>
+        <input type="file" accept="image/*" id="service-img-input"/>
+        <img id="service-img-preview" style="display:none;max-width:200px;margin-top:0.5rem;border-radius:4px"/>
+        <input type="hidden" id="service-img-data"/>
+        <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.3rem">Max 800px, JPEG compressed. Must be under 750KB.</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel" onclick="document.getElementById('service-modal').classList.remove('open')">Cancel</button>
+      <button class="modal-save" id="service-modal-save">Save Service</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FAQ MODAL ── -->
+<div class="modal-overlay" id="faq-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('faq-modal').classList.remove('open')">&times;</button>
+    <h2 class="modal-title" id="faq-modal-title">Add FAQ</h2>
+    <div class="modal-form">
+      <input type="hidden" id="faq-id"/>
+      <div><label>Question *</label><input type="text" id="faq-question" placeholder="e.g. What day is my pickup?"/></div>
+      <div><label>Answer *</label><textarea id="faq-answer" placeholder="The answer to the question."></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel" onclick="document.getElementById('faq-modal').classList.remove('open')">Cancel</button>
+      <button class="modal-save" id="faq-modal-save">Save FAQ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── POLICY MODAL ── -->
+<div class="modal-overlay" id="policy-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('policy-modal').classList.remove('open')">&times;</button>
+    <h2 class="modal-title" id="policy-modal-title">Add Policy</h2>
+    <div class="modal-form">
+      <input type="hidden" id="policy-id"/>
+      <div><label>Title *</label><input type="text" id="policy-title" placeholder="e.g. Late Payment Fee"/></div>
+      <div><label>Body *</label><textarea id="policy-body" placeholder="Policy details."></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel" onclick="document.getElementById('policy-modal').classList.remove('open')">Cancel</button>
+      <button class="modal-save" id="policy-modal-save">Save Policy</button>
     </div>
   </div>
 </div>
@@ -272,7 +532,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/fireba
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-// ⚠️ PLACEHOLDER — replace with your real Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCO-9ffr9W9WEiEWOWnHtCFKSu-y7YpjOs",
   authDomain: "dennys-sanitation.firebaseapp.com",
@@ -289,7 +548,87 @@ const db   = getFirestore(app);
 // ════════════════════════════════════════════════════════
 // STATE
 // ════════════════════════════════════════════════════════
-let notices = [];
+let notices  = [];
+let services = [];
+let faqs     = [];
+let policies = [];
+let siteConfig = {};
+
+// ════════════════════════════════════════════════════════
+// UTILS
+// ════════════════════════════════════════════════════════
+function esc(str) {
+  if (!str) return '';
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function toast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = type + ' show';
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function truncate(str, len) {
+  if (!str) return '';
+  return str.length > len ? str.substring(0, len) + '...' : str;
+}
+
+// Canvas-based image resize: max dimension, JPEG quality
+function resizeImage(file, maxDim, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width, h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+          else       { w = Math.round(w * maxDim / h); h = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        // Check size (base64 → bytes ~ length * 0.75)
+        const sizeKB = Math.round(dataUrl.length * 0.75 / 1024);
+        if (sizeKB > 750) {
+          reject(new Error(`Image too large after compression (${sizeKB}KB). Try a smaller image.`));
+          return;
+        }
+        resolve(dataUrl);
+      };
+      img.onerror = () => reject(new Error('Could not read image.'));
+      img.src = e.target.result;
+    };
+    reader.onerror = () => reject(new Error('Could not read file.'));
+    reader.readAsDataURL(file);
+  });
+}
+
+// Convert 24h time string to 12h AM/PM
+function to12h(t) {
+  if (!t) return '';
+  const [h, m] = t.split(':').map(Number);
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
+}
+
+// Convert "7:00 AM" to "07:00" (24h for input[type=time])
+function to24h(str) {
+  if (!str) return '08:00';
+  const match = str.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!match) return '08:00';
+  let h = parseInt(match[1]), m = parseInt(match[2]);
+  const ampm = match[3].toUpperCase();
+  if (ampm === 'PM' && h !== 12) h += 12;
+  if (ampm === 'AM' && h === 12) h = 0;
+  return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+}
 
 // ════════════════════════════════════════════════════════
 // AUTH
@@ -364,7 +703,36 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 // LOAD ALL DATA
 // ════════════════════════════════════════════════════════
 async function loadAll() {
-  await Promise.all([loadNotices(), loadSettings()]);
+  await Promise.all([
+    loadNotices(),
+    loadServices(),
+    loadFaqs(),
+    loadPolicies(),
+    loadSiteConfig()
+  ]);
+}
+
+async function loadSiteConfig() {
+  try {
+    const snap = await getDoc(doc(db, 'config', 'site'));
+    siteConfig = snap.exists() ? snap.data() : {};
+    // Populate settings fields
+    document.getElementById('setting-announcement').value   = siteConfig.announcement || '';
+    document.getElementById('setting-hours-override').value = siteConfig.hoursOverride || '';
+    // Contact
+    const c = siteConfig.contact || {};
+    document.getElementById('setting-phone').value   = c.phone || '';
+    document.getElementById('setting-email').value   = c.email || '';
+    document.getElementById('setting-address').value = c.address || '';
+    // Hours
+    renderHoursForm();
+    // Can redemption
+    document.getElementById('can-redemption-hours').value = siteConfig.canRedemptionHours || '';
+    // Headings
+    loadHeadingsForm();
+  } catch(e) {
+    console.warn('Could not load site config:', e);
+  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -377,22 +745,15 @@ async function loadNotices() {
     snap.forEach(d => notices.push({ id: d.id, ...d.data() }));
     notices.sort((a,b) => (a.order || 0) - (b.order || 0));
     renderNotices();
-  } catch(e) {
-    toast('Could not load notices', 'error');
-  }
+  } catch(e) { toast('Could not load notices', 'error'); }
 }
 
 function renderNotices() {
   const tbody = document.getElementById('notices-tbody');
   const empty = document.getElementById('notices-empty');
   const table = document.getElementById('notices-table');
-  if (!notices.length) {
-    table.style.display = 'none';
-    empty.style.display = 'block';
-    return;
-  }
-  table.style.display = '';
-  empty.style.display = 'none';
+  if (!notices.length) { table.style.display = 'none'; empty.style.display = 'block'; return; }
+  table.style.display = ''; empty.style.display = 'none';
   tbody.innerHTML = notices.map((n, i) => `
     <tr>
       <td>
@@ -410,9 +771,6 @@ function renderNotices() {
   `).join('');
 }
 
-// Add / Edit notice
-document.getElementById('add-notice-btn').addEventListener('click', () => openNoticeModal());
-
 function openNoticeModal(notice) {
   document.getElementById('notice-id').value     = notice ? notice.id : '';
   document.getElementById('notice-title').value   = notice ? notice.title : '';
@@ -422,28 +780,18 @@ function openNoticeModal(notice) {
   document.getElementById('notice-modal').classList.add('open');
 }
 
-window.editNotice = (id) => {
-  const n = notices.find(x => x.id === id);
-  if (n) openNoticeModal(n);
-};
-
+window.openNoticeModal = () => openNoticeModal(null);
+window.editNotice = (id) => { const n = notices.find(x => x.id === id); if (n) openNoticeModal(n); };
 window.delNotice = async (id) => {
   if (!confirm('Delete this notice?')) return;
-  try {
-    await deleteDoc(doc(db, 'notices', id));
-    toast('Notice deleted', 'success');
-    await loadNotices();
-  } catch(e) {
-    toast('Could not delete notice', 'error');
-  }
+  try { await deleteDoc(doc(db, 'notices', id)); toast('Notice deleted', 'success'); await loadNotices(); }
+  catch(e) { toast('Could not delete notice', 'error'); }
 };
-
 window.moveNotice = async (id, dir) => {
   const idx = notices.findIndex(x => x.id === id);
   if (idx < 0) return;
   const swapIdx = idx + dir;
   if (swapIdx < 0 || swapIdx >= notices.length) return;
-  // Swap order values
   const a = notices[idx], b = notices[swapIdx];
   const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
   try {
@@ -452,12 +800,9 @@ window.moveNotice = async (id, dir) => {
       updateDoc(doc(db, 'notices', b.id), { order: aOrder })
     ]);
     await loadNotices();
-  } catch(e) {
-    toast('Could not reorder', 'error');
-  }
+  } catch(e) { toast('Could not reorder', 'error'); }
 };
 
-// Save notice
 document.getElementById('notice-modal-save').addEventListener('click', async () => {
   const id      = document.getElementById('notice-id').value;
   const title   = document.getElementById('notice-title').value.trim();
@@ -470,106 +815,516 @@ document.getElementById('notice-modal-save').addEventListener('click', async () 
     if (id) {
       await updateDoc(doc(db, 'notices', id), { title, body, expires });
     } else {
-      const order = notices.length;
-      await addDoc(collection(db, 'notices'), { title, body, expires, order });
+      await addDoc(collection(db, 'notices'), { title, body, expires, order: notices.length });
     }
     document.getElementById('notice-modal').classList.remove('open');
     toast(id ? 'Notice updated' : 'Notice added', 'success');
     await loadNotices();
-  } catch(e) {
-    toast('Could not save notice', 'error');
-  }
+  } catch(e) { toast('Could not save notice', 'error'); }
   btn.disabled = false;
 });
 
-// Modal close
-document.getElementById('notice-modal-close').addEventListener('click', () => document.getElementById('notice-modal').classList.remove('open'));
-document.getElementById('notice-modal-cancel').addEventListener('click', () => document.getElementById('notice-modal').classList.remove('open'));
-document.getElementById('notice-modal').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
+// ════════════════════════════════════════════════════════
+// SERVICES
+// ════════════════════════════════════════════════════════
+async function loadServices() {
+  try {
+    const snap = await getDocs(collection(db, 'services'));
+    services = [];
+    snap.forEach(d => services.push({ id: d.id, ...d.data() }));
+    services.sort((a,b) => (a.order || 0) - (b.order || 0));
+    renderServices();
+  } catch(e) { toast('Could not load services', 'error'); }
+}
+
+function renderServices() {
+  const tbody = document.getElementById('services-tbody');
+  const empty = document.getElementById('services-empty');
+  const table = document.getElementById('services-table');
+  if (!services.length) { table.style.display = 'none'; empty.style.display = 'block'; return; }
+  table.style.display = ''; empty.style.display = 'none';
+  tbody.innerHTML = services.map((s, i) => `
+    <tr>
+      <td>
+        <button class="btn-order" ${i===0?'disabled':''} onclick="moveService('${s.id}',-1)">&uarr;</button>
+        <button class="btn-order" ${i===services.length-1?'disabled':''} onclick="moveService('${s.id}',1)">&darr;</button>
+      </td>
+      <td><span style="background:var(--danger-bg);color:var(--red);padding:0.15rem 0.5rem;border-radius:3px;font-size:0.78rem;font-weight:600">${esc(s.tag || '')}</span></td>
+      <td class="td-title">${esc(s.name)}</td>
+      <td class="td-actions">
+        <button class="btn-edit" onclick="editService('${s.id}')">Edit</button>
+        <button class="btn-del" onclick="delService('${s.id}')">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function openServiceModal(svc) {
+  document.getElementById('service-id').value       = svc ? svc.id : '';
+  document.getElementById('service-tag').value       = svc ? (svc.tag || '') : '';
+  document.getElementById('service-name').value      = svc ? svc.name : '';
+  document.getElementById('service-desc').value      = svc ? (svc.description || '') : '';
+  document.getElementById('service-details').value   = svc ? (svc.details || '') : '';
+  document.getElementById('service-img-data').value  = svc ? (svc.img || '') : '';
+  document.getElementById('service-img-input').value = '';
+  const preview = document.getElementById('service-img-preview');
+  if (svc && svc.img) { preview.src = svc.img; preview.style.display = 'block'; }
+  else { preview.style.display = 'none'; }
+  document.getElementById('service-modal-title').textContent = svc ? 'Edit Service' : 'Add Service';
+  document.getElementById('service-modal').classList.add('open');
+}
+
+window.openServiceModal = () => openServiceModal(null);
+window.editService = (id) => { const s = services.find(x => x.id === id); if (s) openServiceModal(s); };
+window.delService = async (id) => {
+  if (!confirm('Delete this service?')) return;
+  try { await deleteDoc(doc(db, 'services', id)); toast('Service deleted', 'success'); await loadServices(); }
+  catch(e) { toast('Could not delete service', 'error'); }
+};
+window.moveService = async (id, dir) => {
+  const idx = services.findIndex(x => x.id === id);
+  if (idx < 0) return;
+  const swapIdx = idx + dir;
+  if (swapIdx < 0 || swapIdx >= services.length) return;
+  const a = services[idx], b = services[swapIdx];
+  const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
+  try {
+    await Promise.all([
+      updateDoc(doc(db, 'services', a.id), { order: bOrder }),
+      updateDoc(doc(db, 'services', b.id), { order: aOrder })
+    ]);
+    await loadServices();
+  } catch(e) { toast('Could not reorder', 'error'); }
+};
+
+// Service image upload handler
+document.getElementById('service-img-input').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const dataUrl = await resizeImage(file, 800, 0.75);
+    document.getElementById('service-img-data').value = dataUrl;
+    const preview = document.getElementById('service-img-preview');
+    preview.src = dataUrl; preview.style.display = 'block';
+  } catch(err) {
+    alert(err.message);
+    e.target.value = '';
+  }
+});
+
+document.getElementById('service-modal-save').addEventListener('click', async () => {
+  const id          = document.getElementById('service-id').value;
+  const tag         = document.getElementById('service-tag').value.trim();
+  const name        = document.getElementById('service-name').value.trim();
+  const description = document.getElementById('service-desc').value.trim();
+  const details     = document.getElementById('service-details').value.trim();
+  const img         = document.getElementById('service-img-data').value;
+  if (!name) { alert('Name is required.'); return; }
+  const btn = document.getElementById('service-modal-save');
+  btn.disabled = true;
+  try {
+    const data = { tag, name, description, details, img };
+    if (id) {
+      await updateDoc(doc(db, 'services', id), data);
+    } else {
+      data.order = services.length;
+      await addDoc(collection(db, 'services'), data);
+    }
+    document.getElementById('service-modal').classList.remove('open');
+    toast(id ? 'Service updated' : 'Service added', 'success');
+    await loadServices();
+  } catch(e) { toast('Could not save service', 'error'); }
+  btn.disabled = false;
+});
+
+// ════════════════════════════════════════════════════════
+// FAQ
+// ════════════════════════════════════════════════════════
+async function loadFaqs() {
+  try {
+    const snap = await getDocs(collection(db, 'faqs'));
+    faqs = [];
+    snap.forEach(d => faqs.push({ id: d.id, ...d.data() }));
+    faqs.sort((a,b) => (a.order || 0) - (b.order || 0));
+    renderFaqs();
+  } catch(e) { toast('Could not load FAQs', 'error'); }
+}
+
+function renderFaqs() {
+  const tbody = document.getElementById('faq-tbody');
+  const empty = document.getElementById('faq-empty');
+  const table = document.getElementById('faq-table');
+  if (!faqs.length) { table.style.display = 'none'; empty.style.display = 'block'; return; }
+  table.style.display = ''; empty.style.display = 'none';
+  tbody.innerHTML = faqs.map((f, i) => `
+    <tr>
+      <td>
+        <button class="btn-order" ${i===0?'disabled':''} onclick="moveFaq('${f.id}',-1)">&uarr;</button>
+        <button class="btn-order" ${i===faqs.length-1?'disabled':''} onclick="moveFaq('${f.id}',1)">&darr;</button>
+      </td>
+      <td class="td-title" style="max-width:400px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(truncate(f.question, 80))}</td>
+      <td class="td-actions">
+        <button class="btn-edit" onclick="editFaq('${f.id}')">Edit</button>
+        <button class="btn-del" onclick="delFaq('${f.id}')">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function openFaqModal(faq) {
+  document.getElementById('faq-id').value       = faq ? faq.id : '';
+  document.getElementById('faq-question').value = faq ? faq.question : '';
+  document.getElementById('faq-answer').value   = faq ? faq.answer : '';
+  document.getElementById('faq-modal-title').textContent = faq ? 'Edit FAQ' : 'Add FAQ';
+  document.getElementById('faq-modal').classList.add('open');
+}
+
+window.openFaqModal = () => openFaqModal(null);
+window.editFaq = (id) => { const f = faqs.find(x => x.id === id); if (f) openFaqModal(f); };
+window.delFaq = async (id) => {
+  if (!confirm('Delete this FAQ?')) return;
+  try { await deleteDoc(doc(db, 'faqs', id)); toast('FAQ deleted', 'success'); await loadFaqs(); }
+  catch(e) { toast('Could not delete FAQ', 'error'); }
+};
+window.moveFaq = async (id, dir) => {
+  const idx = faqs.findIndex(x => x.id === id);
+  if (idx < 0) return;
+  const swapIdx = idx + dir;
+  if (swapIdx < 0 || swapIdx >= faqs.length) return;
+  const a = faqs[idx], b = faqs[swapIdx];
+  const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
+  try {
+    await Promise.all([
+      updateDoc(doc(db, 'faqs', a.id), { order: bOrder }),
+      updateDoc(doc(db, 'faqs', b.id), { order: aOrder })
+    ]);
+    await loadFaqs();
+  } catch(e) { toast('Could not reorder', 'error'); }
+};
+
+document.getElementById('faq-modal-save').addEventListener('click', async () => {
+  const id       = document.getElementById('faq-id').value;
+  const question = document.getElementById('faq-question').value.trim();
+  const answer   = document.getElementById('faq-answer').value.trim();
+  if (!question || !answer) { alert('Question and answer are required.'); return; }
+  const btn = document.getElementById('faq-modal-save');
+  btn.disabled = true;
+  try {
+    if (id) {
+      await updateDoc(doc(db, 'faqs', id), { question, answer });
+    } else {
+      await addDoc(collection(db, 'faqs'), { question, answer, order: faqs.length });
+    }
+    document.getElementById('faq-modal').classList.remove('open');
+    toast(id ? 'FAQ updated' : 'FAQ added', 'success');
+    await loadFaqs();
+  } catch(e) { toast('Could not save FAQ', 'error'); }
+  btn.disabled = false;
+});
+
+// ════════════════════════════════════════════════════════
+// POLICIES
+// ════════════════════════════════════════════════════════
+async function loadPolicies() {
+  try {
+    const snap = await getDocs(collection(db, 'policies'));
+    policies = [];
+    snap.forEach(d => policies.push({ id: d.id, ...d.data() }));
+    policies.sort((a,b) => (a.order || 0) - (b.order || 0));
+    renderPolicies();
+  } catch(e) { toast('Could not load policies', 'error'); }
+}
+
+function renderPolicies() {
+  const tbody = document.getElementById('policies-tbody');
+  const empty = document.getElementById('policies-empty');
+  const table = document.getElementById('policies-table');
+  if (!policies.length) { table.style.display = 'none'; empty.style.display = 'block'; return; }
+  table.style.display = ''; empty.style.display = 'none';
+  tbody.innerHTML = policies.map((p, i) => `
+    <tr>
+      <td>
+        <button class="btn-order" ${i===0?'disabled':''} onclick="movePolicy('${p.id}',-1)">&uarr;</button>
+        <button class="btn-order" ${i===policies.length-1?'disabled':''} onclick="movePolicy('${p.id}',1)">&darr;</button>
+      </td>
+      <td class="td-title">${esc(p.title)}</td>
+      <td class="td-actions">
+        <button class="btn-edit" onclick="editPolicy('${p.id}')">Edit</button>
+        <button class="btn-del" onclick="delPolicy('${p.id}')">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function openPolicyModal(pol) {
+  document.getElementById('policy-id').value    = pol ? pol.id : '';
+  document.getElementById('policy-title').value = pol ? pol.title : '';
+  document.getElementById('policy-body').value  = pol ? pol.body : '';
+  document.getElementById('policy-modal-title').textContent = pol ? 'Edit Policy' : 'Add Policy';
+  document.getElementById('policy-modal').classList.add('open');
+}
+
+window.openPolicyModal = () => openPolicyModal(null);
+window.editPolicy = (id) => { const p = policies.find(x => x.id === id); if (p) openPolicyModal(p); };
+window.delPolicy = async (id) => {
+  if (!confirm('Delete this policy?')) return;
+  try { await deleteDoc(doc(db, 'policies', id)); toast('Policy deleted', 'success'); await loadPolicies(); }
+  catch(e) { toast('Could not delete policy', 'error'); }
+};
+window.movePolicy = async (id, dir) => {
+  const idx = policies.findIndex(x => x.id === id);
+  if (idx < 0) return;
+  const swapIdx = idx + dir;
+  if (swapIdx < 0 || swapIdx >= policies.length) return;
+  const a = policies[idx], b = policies[swapIdx];
+  const aOrder = a.order ?? idx, bOrder = b.order ?? swapIdx;
+  try {
+    await Promise.all([
+      updateDoc(doc(db, 'policies', a.id), { order: bOrder }),
+      updateDoc(doc(db, 'policies', b.id), { order: aOrder })
+    ]);
+    await loadPolicies();
+  } catch(e) { toast('Could not reorder', 'error'); }
+};
+
+document.getElementById('policy-modal-save').addEventListener('click', async () => {
+  const id    = document.getElementById('policy-id').value;
+  const title = document.getElementById('policy-title').value.trim();
+  const body  = document.getElementById('policy-body').value.trim();
+  if (!title || !body) { alert('Title and body are required.'); return; }
+  const btn = document.getElementById('policy-modal-save');
+  btn.disabled = true;
+  try {
+    if (id) {
+      await updateDoc(doc(db, 'policies', id), { title, body });
+    } else {
+      await addDoc(collection(db, 'policies'), { title, body, order: policies.length });
+    }
+    document.getElementById('policy-modal').classList.remove('open');
+    toast(id ? 'Policy updated' : 'Policy added', 'success');
+    await loadPolicies();
+  } catch(e) { toast('Could not save policy', 'error'); }
+  btn.disabled = false;
+});
+
+// ════════════════════════════════════════════════════════
+// HOURS
+// ════════════════════════════════════════════════════════
+const DAYS = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+const DAY_LABELS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+function renderHoursForm() {
+  const grid = document.getElementById('office-hours-grid');
+  const hours = siteConfig.hours || {};
+  grid.innerHTML = DAYS.map((day, i) => {
+    const d = hours[day] || { open: true, from: '7:00 AM', to: '5:00 PM' };
+    const isOpen = d.open !== false;
+    const fromVal = to24h(d.from);
+    const toVal = to24h(d.to);
+    return `
+      <div class="hours-row">
+        <label>${DAY_LABELS[i]}</label>
+        <label class="toggle">
+          <input type="checkbox" data-day="${day}" data-field="open" ${isOpen ? 'checked' : ''}/>
+          <span class="slider"></span>
+        </label>
+        <input type="time" data-day="${day}" data-field="from" value="${fromVal}"/>
+        <span style="text-align:center;color:var(--text-light);font-size:0.85rem">to</span>
+        <input type="time" data-day="${day}" data-field="to" value="${toVal}"/>
+      </div>
+    `;
+  }).join('');
+}
+
+window.saveHours = async () => {
+  const hours = {};
+  DAYS.forEach(day => {
+    const openEl = document.querySelector(`input[data-day="${day}"][data-field="open"]`);
+    const fromEl = document.querySelector(`input[data-day="${day}"][data-field="from"]`);
+    const toEl   = document.querySelector(`input[data-day="${day}"][data-field="to"]`);
+    hours[day] = {
+      open: openEl.checked,
+      from: to12h(fromEl.value),
+      to: to12h(toEl.value)
+    };
+  });
+  const canRedemptionHours = document.getElementById('can-redemption-hours').value.trim();
+  try {
+    await setDoc(doc(db, 'config', 'site'), { hours, canRedemptionHours }, { merge: true });
+    siteConfig.hours = hours;
+    siteConfig.canRedemptionHours = canRedemptionHours;
+    toast('Hours saved', 'success');
+  } catch(e) { toast('Could not save hours', 'error'); }
+};
+
+// ════════════════════════════════════════════════════════
+// IMAGES
+// ════════════════════════════════════════════════════════
+const IMAGE_IDS = [
+  { id: 'hero', label: 'Hero' },
+  { id: 'logo', label: 'Logo' },
+  { id: 'residential', label: 'Residential' },
+  { id: 'commercial', label: 'Commercial' },
+  { id: 'recycling', label: 'Recycling' },
+  { id: 'can-redemption', label: 'Can Redemption' },
+  { id: 'portable-toilet', label: 'Portable Toilet' },
+  { id: 'dumpster-rolloff', label: 'Dumpster / Roll-off' },
+  { id: 'promo-flyer', label: 'Promo Flyer' }
+];
+
+let currentImageTarget = null;
+
+async function loadImages() {
+  const grid = document.getElementById('images-grid');
+  grid.innerHTML = IMAGE_IDS.map(img => `
+    <div class="img-card" id="img-card-${img.id}">
+      <img class="img-preview" id="img-preview-${img.id}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='150'%3E%3Crect fill='%23E0DCDA' width='220' height='150'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23888' font-family='sans-serif' font-size='14'%3ENo image%3C/text%3E%3C/svg%3E" alt="${esc(img.label)}"/>
+      <div class="img-body">
+        <div class="img-label">${esc(img.label)}</div>
+        <div class="img-actions">
+          <button class="btn-change" onclick="changeImage('${img.id}')">Change Photo</button>
+          <button class="btn-reset" onclick="resetImage('${img.id}')">Reset</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Load current images from Firestore
+  for (const img of IMAGE_IDS) {
+    try {
+      const snap = await getDoc(doc(db, 'siteImages', img.id));
+      if (snap.exists() && snap.data().img) {
+        document.getElementById(`img-preview-${img.id}`).src = snap.data().img;
+      }
+    } catch(e) { /* ignore individual failures */ }
+  }
+}
+
+window.changeImage = (imgId) => {
+  currentImageTarget = imgId;
+  document.getElementById('img-file-input').click();
+};
+
+document.getElementById('img-file-input').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file || !currentImageTarget) return;
+  try {
+    const dataUrl = await resizeImage(file, 800, 0.75);
+    await setDoc(doc(db, 'siteImages', currentImageTarget), { img: dataUrl });
+    document.getElementById(`img-preview-${currentImageTarget}`).src = dataUrl;
+    toast('Image updated', 'success');
+  } catch(err) {
+    toast(err.message || 'Could not upload image', 'error');
+  }
+  e.target.value = '';
+  currentImageTarget = null;
+});
+
+window.resetImage = async (imgId) => {
+  if (!confirm(`Reset "${IMAGE_IDS.find(i => i.id === imgId)?.label}" to default?`)) return;
+  try {
+    await deleteDoc(doc(db, 'siteImages', imgId));
+    document.getElementById(`img-preview-${imgId}`).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='150'%3E%3Crect fill='%23E0DCDA' width='220' height='150'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23888' font-family='sans-serif' font-size='14'%3ENo image%3C/text%3E%3C/svg%3E";
+    toast('Image reset to default', 'success');
+  } catch(e) { toast('Could not reset image', 'error'); }
+};
+
+// Load images when Images tab is first clicked
+let imagesLoaded = false;
+document.querySelector('[data-tab="images"]').addEventListener('click', () => {
+  if (!imagesLoaded) { imagesLoaded = true; loadImages(); }
+});
+
+// ════════════════════════════════════════════════════════
+// HEADINGS
+// ════════════════════════════════════════════════════════
+function loadHeadingsForm() {
+  const headings = siteConfig.headings || {};
+  document.querySelectorAll('[data-heading]').forEach(el => {
+    const key = el.dataset.heading;
+    el.value = headings[key] || '';
+  });
+}
+
+window.saveHeadings = async () => {
+  const headings = {};
+  document.querySelectorAll('[data-heading]').forEach(el => {
+    headings[el.dataset.heading] = el.value.trim();
+  });
+  try {
+    await setDoc(doc(db, 'config', 'site'), { headings }, { merge: true });
+    siteConfig.headings = headings;
+    toast('Headings saved', 'success');
+  } catch(e) { toast('Could not save headings', 'error'); }
+};
 
 // ════════════════════════════════════════════════════════
 // SETTINGS
 // ════════════════════════════════════════════════════════
-async function loadSettings() {
-  try {
-    const snap = await getDoc(doc(db, 'config', 'site'));
-    if (!snap.exists()) return;
-    const cfg = snap.data();
-    document.getElementById('setting-announcement').value    = cfg.announcement || '';
-    document.getElementById('setting-hours-override').value  = cfg.hoursOverride || '';
-  } catch(e) {
-    console.warn('Could not load settings:', e);
-  }
-}
-
-// Save announcement
-document.getElementById('save-announcement').addEventListener('click', async () => {
+window.saveAnnouncement = async () => {
   const val = document.getElementById('setting-announcement').value.trim();
   try {
     await setDoc(doc(db, 'config', 'site'), { announcement: val }, { merge: true });
-    showConfirm('announcement-confirm');
-  } catch(e) {
-    toast('Could not save', 'error');
-  }
-});
+    siteConfig.announcement = val;
+    toast('Announcement saved', 'success');
+  } catch(e) { toast('Could not save', 'error'); }
+};
 
-// Save hours override
-document.getElementById('save-hours-override').addEventListener('click', async () => {
+window.saveHoursOverride = async () => {
   const val = document.getElementById('setting-hours-override').value.trim();
   try {
     await setDoc(doc(db, 'config', 'site'), { hoursOverride: val }, { merge: true });
-    showConfirm('hours-override-confirm');
-  } catch(e) {
-    toast('Could not save', 'error');
-  }
-});
+    siteConfig.hoursOverride = val;
+    toast('Hours override saved', 'success');
+  } catch(e) { toast('Could not save', 'error'); }
+};
 
-// Export
-document.getElementById('export-btn').addEventListener('click', async () => {
+window.saveContact = async () => {
+  const contact = {
+    phone:   document.getElementById('setting-phone').value.trim(),
+    email:   document.getElementById('setting-email').value.trim(),
+    address: document.getElementById('setting-address').value.trim()
+  };
   try {
-    const [noticesSnap, configSnap] = await Promise.all([
+    await setDoc(doc(db, 'config', 'site'), { contact }, { merge: true });
+    siteConfig.contact = contact;
+    toast('Contact info saved', 'success');
+  } catch(e) { toast('Could not save contact info', 'error'); }
+};
+
+window.exportBackup = async () => {
+  try {
+    const [noticesSnap, servicesSnap, faqsSnap, policiesSnap, configSnap, imagesSnaps] = await Promise.all([
       getDocs(collection(db, 'notices')),
-      getDoc(doc(db, 'config', 'site'))
+      getDocs(collection(db, 'services')),
+      getDocs(collection(db, 'faqs')),
+      getDocs(collection(db, 'policies')),
+      getDoc(doc(db, 'config', 'site')),
+      getDocs(collection(db, 'siteImages'))
     ]);
     const data = {
       exportedAt: new Date().toISOString(),
       notices: [],
+      services: [],
+      faqs: [],
+      policies: [],
+      siteImages: [],
       config: configSnap.exists() ? configSnap.data() : {}
     };
-    noticesSnap.forEach(d => data.notices.push({ id: d.id, ...d.data() }));
+    noticesSnap.forEach(d  => data.notices.push({ id: d.id, ...d.data() }));
+    servicesSnap.forEach(d => data.services.push({ id: d.id, ...d.data() }));
+    faqsSnap.forEach(d     => data.faqs.push({ id: d.id, ...d.data() }));
+    policiesSnap.forEach(d => data.policies.push({ id: d.id, ...d.data() }));
+    imagesSnaps.forEach(d  => data.siteImages.push({ id: d.id, ...d.data() }));
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
     a.href = url; a.download = `dennys-sanitation-backup-${new Date().toISOString().slice(0,10)}.json`;
     a.click(); URL.revokeObjectURL(url);
     toast('Backup downloaded', 'success');
-  } catch(e) {
-    toast('Could not export', 'error');
-  }
-});
+  } catch(e) { toast('Could not export', 'error'); }
+};
 
-// ════════════════════════════════════════════════════════
-// UTILS
-// ════════════════════════════════════════════════════════
-function esc(str) {
-  if (!str) return '';
-  const d = document.createElement('div');
-  d.textContent = str;
-  return d.innerHTML;
-}
-
-function toast(msg, type) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = type + ' show';
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-function showConfirm(id) {
-  const el = document.getElementById(id);
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 2500);
-}
 </script>
 
 </body>
