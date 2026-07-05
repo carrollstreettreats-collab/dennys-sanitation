@@ -140,8 +140,10 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 document.addEventListener('click', (e) => {
   const header = e.target.closest('.s-card-header');
   if (!header) return;
-  header.parentElement.classList.toggle('open');
-  header.setAttribute('aria-expanded', header.parentElement.classList.contains('open'));
+  const card = header.closest('.s-card');
+  if (!card) return;
+  card.classList.toggle('open');
+  header.setAttribute('aria-expanded', card.classList.contains('open'));
 });
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter' && e.key !== ' ') return;
@@ -219,7 +221,7 @@ async function loadConfig() {
     if (cfg.headings && typeof cfg.headings === 'object') {
       Object.keys(cfg.headings).forEach(key => {
         const el = document.getElementById(key);
-        if (el && cfg.headings[key]) el.innerHTML = cfg.headings[key];
+        if (el && cfg.headings[key]) el.textContent = cfg.headings[key];
       });
     }
     // ── Hours ──
@@ -359,7 +361,7 @@ async function loadPolicies() {
       return `<div class="policy reveal reveal-delay-${delay}">
         <div class="policy-icon">${icon}</div>
         <h3>${esc(p.name || p.title || '')}</h3>
-        <p>${p.description || p.body || ''}</p>
+        <p>${esc(p.description || p.body || '')}</p>
       </div>`;
     }).join('');
   } catch(e) { console.warn('Could not load policies:', e); }

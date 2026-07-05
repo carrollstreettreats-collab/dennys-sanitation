@@ -4,21 +4,51 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Page Not Found — Denny's Sanitation</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;600&display=swap" rel="stylesheet"/>
+<meta name="description" content="Page not found. Return to the Denny's Sanitation homepage."/>
+<link rel="icon" type="image/png" href="assets/images/dennys-logo.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Barlow',sans-serif;background:#F9F7F5;color:#1C1C1C;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:2rem}
-h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:4rem;color:#C62828;text-transform:uppercase}
-p{color:#555;font-size:1.05rem;margin:1rem 0 2rem;line-height:1.6}
-a{display:inline-block;padding:0.75rem 1.8rem;background:#C62828;color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;border-radius:4px;transition:background 0.2s}
-a:hover{background:#8E0000}
+:root {
+  --red: #C62828;
+  --red-hover: #A51D1D;
+  --dark: #1B2432;
+  --charcoal: #3A4556;
+  --warm-light: #F8F7F4;
+  --white: #FFFFFF;
+  --font-head: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body); background: var(--warm-light); color: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; text-align: center; padding: 2rem;
+  -webkit-font-smoothing: antialiased;
+}
+h1 {
+  font-family: var(--font-head); font-weight: 700; font-size: 4rem;
+  color: var(--red); letter-spacing: -1px;
+}
+p {
+  color: var(--charcoal); font-size: 1.05rem; margin: 1rem 0 2rem; line-height: 1.6;
+}
+a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 10px;
+  background: var(--red); color: var(--white);
+  text-decoration: none; font-family: var(--font-head);
+  font-size: 15px; font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+a:hover { background: var(--red-hover); transform: translateY(-2px); }
+a:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
 </style>
 </head>
 <body>
-<div>
+<main>
   <h1>404</h1>
   <p>This page doesn't exist. Maybe you were looking for our services?</p>
   <a href="/">Back to Home</a>
-</div>
+</main>
 </body>
 </html>
