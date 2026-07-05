@@ -13,10 +13,6 @@ const firebaseConfig = {
 let db;
 try { const app = initializeApp(firebaseConfig); db = getFirestore(app); } catch(e) { console.warn('Firebase not configured \u2014 running in static mode.'); }
 
-// ── Footer Year ──
-var footerYearEl = document.getElementById('footer-year');
-if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
-
 // ── Skeleton Loader ──
 document.addEventListener('DOMContentLoaded', () => {
   const skeleton = document.getElementById('skeleton-loader');
