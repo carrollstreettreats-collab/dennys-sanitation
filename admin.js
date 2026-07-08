@@ -126,13 +126,15 @@ document.getElementById('login-btn').addEventListener('click', async () => {
   const pass  = document.getElementById('login-pass').value;
   const err   = document.getElementById('login-err');
   const btn   = document.getElementById('login-btn');
-  if (!email || !pass) { err.textContent = 'Please enter email and password.'; err.classList.add('show'); return; }
+  if (!email || !pass) { err.textContent = 'Please enter email and password.'; err.style.color = ''; err.classList.add('show'); return; }
   btn.disabled = true;
   try {
     await signInWithEmailAndPassword(auth, email, pass);
     err.classList.remove('show');
+    err.style.color = '';
   } catch(e) {
     err.textContent = 'Invalid email or password.';
+    err.style.color = '';
     err.classList.add('show');
   }
   btn.disabled = false;

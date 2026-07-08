@@ -14,13 +14,14 @@ let db;
 try { const app = initializeApp(firebaseConfig); db = getFirestore(app); } catch(e) { console.warn('Firebase not configured \u2014 running in static mode.'); }
 
 // ── Skeleton Loader ──
-document.addEventListener('DOMContentLoaded', () => {
-  const skeleton = document.getElementById('skeleton-loader');
-  if (skeleton) {
-    skeleton.classList.add('fade-out');
-    skeleton.addEventListener('transitionend', () => skeleton.remove(), { once: true });
-  }
-});
+const skeletonEl = document.getElementById('skeleton-loader');
+if (skeletonEl) {
+  skeletonEl.classList.add('fade-out');
+  skeletonEl.addEventListener('transitionend', () => {
+    skeletonEl.remove();
+    document.querySelectorAll('[data-hero][data-count]').forEach(el => animateCounter(el));
+  }, { once: true });
+}
 
 // ── Scroll Progress Bar ──
 const progressBar = document.getElementById('scroll-progress');
@@ -32,7 +33,6 @@ window.addEventListener('scroll', () => {
 
 // ── Nav Scroll Effect ──
 const nav = document.getElementById('nav');
-let lastScroll = 0;
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
@@ -88,8 +88,10 @@ function animateCounters() {
   document.querySelectorAll('[data-count]').forEach(el => animateCounter(el));
 }
 
-// Fire hero counters immediately on page load
-document.querySelectorAll('[data-hero][data-count]').forEach(el => animateCounter(el));
+// Fire hero counters immediately if no skeleton loader
+if (!skeletonEl) {
+  document.querySelectorAll('[data-hero][data-count]').forEach(el => animateCounter(el));
+}
 
 // ── Scroll Reveal ──
 const revealObserver = new IntersectionObserver((entries) => {
@@ -219,8 +221,34 @@ async function loadConfig() {
     }
     // ── Headings ──
     if (cfg.headings && typeof cfg.headings === 'object') {
+      const headingMap = {
+        'heroTitle': 'hero-title',
+        'heroBadge': 'hero-badge-text',
+        'heroDesc': 'hero-desc',
+        'heroBtn1': 'hero-btn1',
+        'heroBtn2': 'hero-btn2',
+        'servicesEyebrow': 'services-eyebrow',
+        'servicesHeading': 'services-heading',
+        'servicesDesc': 'services-desc',
+        'areaEyebrow': 'area-eyebrow',
+        'areaHeading': 'area-heading',
+        'hoursEyebrow': 'hours-eyebrow',
+        'hoursHeading': 'hours-heading',
+        'faqEyebrow': 'faq-eyebrow',
+        'faqHeading': 'faq-heading',
+        'faqDesc': 'faq-desc',
+        'policiesEyebrow': 'policies-eyebrow',
+        'policiesHeading': 'policies-heading',
+        'policiesDesc': 'policies-desc',
+        'ctaHeading': 'cta-heading',
+        'ctaDesc': 'cta-desc',
+        'contactEyebrow': 'contact-eyebrow',
+        'contactHeading': 'contact-heading',
+        'contactFormTitle': 'contact-form-title'
+      };
       Object.keys(cfg.headings).forEach(key => {
-        const el = document.getElementById(key);
+        const elId = headingMap[key] || key;
+        const el = document.getElementById(elId);
         if (el && cfg.headings[key]) el.textContent = cfg.headings[key];
       });
     }
